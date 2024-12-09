@@ -13,21 +13,22 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using NeBeatStreet.AppData;
-using NeBeatStreet.Pages;
 
-namespace NeBeatStreet
+namespace NeBeatStreet.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для AddEditShoes.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class AddEditShoes : Page
     {
-        public MainWindow()
+        public AddEditShoes()
         {
             InitializeComponent();
-            AppConnect.shoesmodel = new Entities();
-            AppFrame.MainFraim = mainframe;
-            mainframe.Navigate(new Authorization());
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.MainFraim.Navigate(new AdminList());
         }
     }
 }

@@ -1,0 +1,58 @@
+﻿<Page x:Class="NeBeatStreet.Pages.Cart"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NeBeatStreet.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Cart">
+
+    <Grid Background="White">
+        <ListView x:Name="ShoesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,76,58,78" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170"></ColumnDefinition>
+                            <ColumnDefinition Width="300"></ColumnDefinition>
+                            <ColumnDefinition Width="192"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Image Source="{Binding CurrentPhoto}" Height="143"></Image>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock FontFamily="Arial Black">
+                                <Run Text="{Binding ShoesName}" FontSize="24"></Run>
+                            </TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black" FontSize="18">
+                                <Run Text="{Binding ShoesType.TypeName}"></Run>
+                            </TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black">
+                                <Run Text="Артикул: "></Run>
+                                <Run Text="{Binding Article}"></Run>
+                            </TextBlock>
+
+                            <TextBlock>
+                                <Run Text="{Binding ShoesFrim.NameFirm}" FontFamily="Impact" FontSize="16"></Run>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Margin="0,0,30,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="20">
+                                <Run Text="{Binding Price}"></Run>
+                                <Run Text="руб."></Run>
+                            </TextBlock>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Label Content="Корзина" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="36">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Button x:Name="OrderButton" Content="Заказать" HorizontalAlignment="Center" Margin="0,394,0,0" VerticalAlignment="Top" Height="46" Width="132" Foreground="#FF001BF9" Background="#FFFCFDFF"/>
+    </Grid>
+</Page>

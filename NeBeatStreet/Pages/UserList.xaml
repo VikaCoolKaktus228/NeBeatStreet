@@ -1,0 +1,67 @@
+﻿<Page x:Class="NeBeatStreet.Pages.UserList"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NeBeatStreet.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="UserList">
+
+    <Grid Background="White">
+        <ListView x:Name="ShoesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,86,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"></ColumnDefinition>
+                            <ColumnDefinition Width="400"></ColumnDefinition>
+                            <ColumnDefinition Width="192"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Image Source="{Binding CurrentPhoto}" Height="143"></Image>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock FontFamily="Arial Black">
+                                <Run Text="{Binding ShoesName}" FontSize="24"></Run>
+                            </TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black" FontSize="18">
+                                <Run Text="{Binding ShoesType.TypeName}"></Run>
+                            </TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black">
+                                <Run Text="Артикул: "></Run>
+                                <Run Text="{Binding Article}"></Run>
+                            </TextBlock>
+                            <TextBlock>
+                                <Run Text="{Binding Description}" FontFamily="Cascadia Code SemiLight" FontWeight="Normal"></Run>
+                            </TextBlock>
+                            <TextBlock>
+                                <Run Text="{Binding ShoesFrim.NameFirm}" FontFamily="Impact" FontSize="16"></Run>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Margin="0,0,30,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="20">
+                                <Run Text="{Binding Price}"></Run>
+                                <Run Text="руб."></Run>
+                            </TextBlock>
+                            <Button x:Name="AddToCart" Content="В корзину" Width="142" Height="36" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Stretch" BorderBrush="Black" Background="#FF72B9E6" Foreground="#FF152340" FontFamily="Source Code Pro Semibold" FontSize="14" Click="AddToCart_Click"/>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <TextBox x:Name="SearchTb" HorizontalAlignment="Left" Margin="51,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="23" TextChanged="SearchTb_TextChanged"/>
+        <Image HorizontalAlignment="Left" Height="36" Margin="10,45,0,0" VerticalAlignment="Top" Width="39" Source="/Images/149309.png"/>
+        <ComboBox x:Name="ComboFilter" HorizontalAlignment="Left" Margin="218,58,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" SelectionChanged="ComboFilter_SelectionChanged"/>
+        <ComboBox x:Name="ComboSort" HorizontalAlignment="Left" Margin="356,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboSort_SelectionChanged"/>
+        <Label Content="Фильтрация" HorizontalAlignment="Left" Margin="218,34,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
+        <Label Content="Сортировка" HorizontalAlignment="Left" Margin="356,34,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
+        <Button x:Name="ToCartButton" HorizontalAlignment="Left" Margin="706,9,0,0" VerticalAlignment="Top" Height="60" Width="84" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="ToCartButton_Click">
+            <Image HorizontalAlignment="Left" Height="54" VerticalAlignment="Center" Width="56" Source="/Images/cart.png" Panel.ZIndex="2"/>
+        </Button>
+        <Button x:Name="ExitButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="44" Background="#FFE61E1E" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Margin="6,9,0,0" Click="ExitButton_Click">
+            <Image HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="26" Source="/Images/kindpng_2158013 (1).png"/>
+        </Button>
+
+    </Grid>
+</Page>

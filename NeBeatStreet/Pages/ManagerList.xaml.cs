@@ -12,22 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using NeBeatStreet.AppData;
-using NeBeatStreet.Pages;
 
-namespace NeBeatStreet
+namespace NeBeatStreet.Pages
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для ManagerList.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class ManagerList : Page
     {
-        public MainWindow()
+        public ManagerList()
         {
             InitializeComponent();
-            AppConnect.shoesmodel = new Entities();
-            AppFrame.MainFraim = mainframe;
-            mainframe.Navigate(new Authorization());
         }
     }
 }

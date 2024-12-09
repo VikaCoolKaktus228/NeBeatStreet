@@ -1,0 +1,73 @@
+﻿<Page x:Class="NeBeatStreet.Pages.AddEditShoes"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NeBeatStreet.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AddEditShoes">
+
+    <Grid Background="White">
+        <Label Content="Добавить/Изменить обувь" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="36">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <TextBox x:Name="NameShoesTb" Text="{Binding ShoesName}" HorizontalAlignment="Left" Margin="10,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="29"/>
+        <TextBox x:Name="ArticleTb" Text="{Binding Article}" HorizontalAlignment="Left" Margin="10,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="29"/>
+        <TextBox x:Name="PriceTb" Text="{Binding Price}" HorizontalAlignment="Left" Margin="10,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="29"/>
+        <TextBox x:Name="DescriptionTb" Text="{Binding Description}" HorizontalAlignment="Left" Margin="10,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="138"/>
+        <Label Content="Введите название" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Введите артикул" HorizontalAlignment="Left" Margin="10,145,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Введите цену" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Введите описание" HorizontalAlignment="Left" Margin="10,271,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Выберите тип обуви" HorizontalAlignment="Left" Margin="558,75,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Выберите материал" HorizontalAlignment="Left" Margin="558,131,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Выберите цвет" HorizontalAlignment="Left" Margin="558,187,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <Label Content="Выберите фирму" HorizontalAlignment="Left" Margin="558,253,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
+            <Label.Foreground>
+                <SolidColorBrush Color="Black" Opacity="1"/>
+            </Label.Foreground>
+        </Label>
+        <ComboBox x:Name="ComboType" ItemsSource="{Binding ShoesType}" DisplayMemberPath="{Binding NameType}" HorizontalAlignment="Left" Margin="558,104,0,0" VerticalAlignment="Top" Width="177"/>
+        <ComboBox x:Name="ComboMaterial" ItemsSource="{Binding ShoesMaterial}" DisplayMemberPath="{Binding MaterialName}" HorizontalAlignment="Left" Margin="558,158,0,0" VerticalAlignment="Top" Width="177"/>
+        <ComboBox x:Name="ComboColor" ItemsSource="{Binding ShoesColor}" DisplayMemberPath="{Binding ColorName}" HorizontalAlignment="Left" Margin="558,225,0,0" VerticalAlignment="Top" Width="177">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="177"/>
+        </ComboBox>
+        <ComboBox x:Name="ComboFirm" ItemsSource="{Binding ShoesFirm}" DisplayMemberPath="{Binding NameFirm}" HorizontalAlignment="Left" Margin="558,286,0,0" VerticalAlignment="Top" Width="177">
+            <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="177"/>
+        </ComboBox>
+        <Button x:Name="AddEditButton" Content="Сохранить" HorizontalAlignment="Left" Margin="631,396,0,0" VerticalAlignment="Top" Height="44" Width="156" Background="#FF0901F5" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
+        <Button x:Name="GoBackButton" Content="назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="78" Background="#FFA1B0CE" Foreground="#FF223B4E" FontFamily="Cascadia Mono SemiBold" Click="GoBackButton_Click"/>
+
+    </Grid>
+</Page>
