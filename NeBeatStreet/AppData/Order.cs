@@ -17,6 +17,7 @@ namespace NeBeatStreet.AppData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Order()
         {
+            this.CartTable = new HashSet<CartTable>();
             this.OrderManager = new HashSet<OrderManager>();
         }
     
@@ -24,6 +25,8 @@ namespace NeBeatStreet.AppData
         public int IdUsers { get; set; }
         public int IdStatus { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CartTable> CartTable { get; set; }
         public virtual Status Status { get; set; }
         public virtual User User { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

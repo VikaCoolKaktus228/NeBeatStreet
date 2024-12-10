@@ -58,15 +58,15 @@
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <ComboBox x:Name="ComboType" ItemsSource="{Binding ShoesType}" DisplayMemberPath="{Binding NameType}" HorizontalAlignment="Left" Margin="558,104,0,0" VerticalAlignment="Top" Width="177"/>
-        <ComboBox x:Name="ComboMaterial" ItemsSource="{Binding ShoesMaterial}" DisplayMemberPath="{Binding MaterialName}" HorizontalAlignment="Left" Margin="558,158,0,0" VerticalAlignment="Top" Width="177"/>
-        <ComboBox x:Name="ComboColor" ItemsSource="{Binding ShoesColor}" DisplayMemberPath="{Binding ColorName}" HorizontalAlignment="Left" Margin="558,225,0,0" VerticalAlignment="Top" Width="177">
+        <ComboBox x:Name="ComboType" ItemsSource="{Binding ShoesType}" DisplayMemberPath="NameType" HorizontalAlignment="Left" Margin="558,104,0,0" VerticalAlignment="Top" Width="177"/>
+        <ComboBox x:Name="ComboMaterial" ItemsSource="{Binding ShoesMaterial}" DisplayMemberPath="MaterialName" HorizontalAlignment="Left" Margin="558,158,0,0" VerticalAlignment="Top" Width="177"/>
+        <ComboBox x:Name="ComboColor" ItemsSource="{Binding ShoesColor}" DisplayMemberPath="ColorName" HorizontalAlignment="Left" Margin="558,225,0,0" VerticalAlignment="Top" Width="177">
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="177"/>
         </ComboBox>
-        <ComboBox x:Name="ComboFirm" ItemsSource="{Binding ShoesFirm}" DisplayMemberPath="{Binding NameFirm}" HorizontalAlignment="Left" Margin="558,286,0,0" VerticalAlignment="Top" Width="177">
+        <ComboBox x:Name="ComboFirm" ItemsSource="{Binding ShoesFirm}" DisplayMemberPath="NameFirm" HorizontalAlignment="Left" Margin="558,286,0,0" VerticalAlignment="Top" Width="177">
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="177"/>
         </ComboBox>
-        <Button x:Name="AddEditButton" Content="Сохранить" HorizontalAlignment="Left" Margin="631,396,0,0" VerticalAlignment="Top" Height="44" Width="156" Background="#FF0901F5" Foreground="White" FontFamily="Cascadia Mono SemiBold"/>
+        <Button x:Name="AddEditButton" Content="Сохранить" HorizontalAlignment="Left" Margin="631,396,0,0" VerticalAlignment="Top" Height="44" Width="156" Background="#FF0901F5" Foreground="White" FontFamily="Cascadia Mono SemiBold" Click="AddEditButton_Click_1"/>
         <Button x:Name="GoBackButton" Content="назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="78" Background="#FFA1B0CE" Foreground="#FF223B4E" FontFamily="Cascadia Mono SemiBold" Click="GoBackButton_Click"/>
 
     </Grid>

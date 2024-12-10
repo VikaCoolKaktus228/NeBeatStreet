@@ -26,7 +26,7 @@
                                 <Run Text="{Binding ShoesName}" FontSize="24"></Run>
                             </TextBlock>
                             <TextBlock FontFamily="Source Code Pro Black" FontSize="18">
-                                <Run Text="{Binding ShoesType.TypeName}"></Run>
+                                <Run Text="{Binding ShoesType.NameType}"></Run>
                             </TextBlock>
                             <TextBlock FontFamily="Source Code Pro Black">
                                 <Run Text="Артикул: "></Run>
@@ -36,7 +36,7 @@
                                 <Run Text="{Binding Description}" FontFamily="Cascadia Code SemiLight" FontWeight="Normal"></Run>
                             </TextBlock>
                             <TextBlock>
-                                <Run Text="{Binding ShoesFrim.NameFirm}" FontFamily="Impact" FontSize="16"></Run>
+                                <Run Text="{Binding ShoesFirm.NameFirm}" FontFamily="Impact" FontSize="16"></Run>
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="2">

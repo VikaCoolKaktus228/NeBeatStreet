@@ -8,7 +8,87 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AdminListUsers">
 
-    <Grid>
-        
+    <Grid Width="800" Height="450">
+        <Grid.Background>
+            <RadialGradientBrush>
+                <GradientStop Color="#FF2643D2" Offset="0"/>
+                <GradientStop Color="White" Offset="1"/>
+            </RadialGradientBrush>
+        </Grid.Background>
+        <ListView x:Name="userlist" ScrollViewer.CanContentScroll="False" Margin="52,78,52,20" d:ItemsSource="{d:SampleData ItemCount=5}" ScrollViewer.HorizontalScrollBarVisibility="Hidden" RenderTransformOrigin="30,30" UseLayoutRounding="False" BorderBrush="{x:Null}" Background="{x:Null}" FontFamily="Cascadia Code SemiLight" FontSize="13">
+            <ListView.LayoutTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-3"/>
+                </TransformGroup>
+            </ListView.LayoutTransform>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Width="690" Height="113" Margin="0,0,0,3">
+                        <Grid.Background>
+                            <SolidColorBrush Color="#FF9FD4F7" Opacity="0.15"/>
+                        </Grid.Background>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="860"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Width="128" Orientation="Vertical" HorizontalAlignment="Left" Margin="68,-3,0,3">
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" >
+                        <Run Text="Имя:"/> 
+                        <Run Text="{Binding FirstName}"/>
+                            </TextBlock>
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" >
+                        <Run Text="Пароль:"/> 
+                        <Run Text="{Binding Password}"/>
+                            </TextBlock>
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" >
+                       <Run Text="Логин:"/> 
+                        <Run Text="{Binding Login}"/>
+                            </TextBlock>
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" >
+                        <Run Text="Телефон:"/> 
+                        <Run Text="{Binding Phone}"/>
+                            </TextBlock>
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" >
+                        <Run Text="Email:"/> 
+                        <Run Text="{Binding Email}"/>
+                            </TextBlock>
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto" >
+                        <Run Text="Роль:"/> 
+                        <Run Text="{Binding Role.NameRole}"/>
+                            </TextBlock>
+                        </StackPanel>
+                        <StackPanel Width="170" Orientation="Vertical" HorizontalAlignment="Left" Margin="460,10,0,-10">
+                            <Button x:Name="deleteuser" Height="24" Content="удалить" RenderTransformOrigin="0.5,0.5" Width="134" Foreground="#FF0B2DE6" Margin="0,0,0,5" Background="#FFE5F4FF" Click="deleteuser_Click">
+                                <Button.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="180"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Button.RenderTransform>
+                            </Button>
+                            <Button x:Name="changeuser" Height="25" Content="обновить" RenderTransformOrigin="0.5,0.5" Width="134" Foreground="#FF1236FD" Background="#FFE9F5FF" Click="changeuser_Click">
+                                <Button.RenderTransform>
+                                    <TransformGroup>
+                                        <ScaleTransform ScaleX="-1" ScaleY="-1"/>
+                                        <SkewTransform/>
+                                        <RotateTransform Angle="180"/>
+                                        <TranslateTransform/>
+                                    </TransformGroup>
+                                </Button.RenderTransform>
+                            </Button>
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Button x:Name="adduserbttn" Content="добавить пользователя" HorizontalAlignment="Left" Margin="648,10,0,0" VerticalAlignment="Top" Height="38" Width="142" Foreground="White" Background="#FF2643D2" Click="adduserbttn_Click"/>
+        <Label Content="Пользователи" HorizontalAlignment="Center" Margin="0,3,0,0" VerticalAlignment="Top" Width="304" FontFamily="Arial Black" HorizontalContentAlignment="Center" FontSize="36"/>
+        <Button x:Name="ExitButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="44" Background="#FFE61E1E" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Margin="6,9,0,0" Click="ExitButton_Click" >
+            <Image HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="26" Source="/Images/kindpng_2158013 (1).png"/>
+        </Button>
     </Grid>
 </Page>

@@ -21,14 +21,18 @@ namespace NeBeatStreet.Pages
     /// </summary>
     public partial class UserList : Page
     {
-        public UserList()
+        private User curuser = new User();
+        public UserList(User user)
         {
             InitializeComponent();
             List<Shoes> listshoes = AppConnect.shoesmodel.Shoes.ToList();
             ShoesList.ItemsSource = listshoes;
+            ComboSort.Items.Add("По уменьшению цены");
+            ComboSort.Items.Add("По возрастанию цены");
             ComboFilter.Items.Add("цена от 0 до 1000");
             ComboFilter.Items.Add("цена от 1000 до 5000");
             ComboFilter.Items.Add("цена от 5000");
+            DataContext = curuser;
         }
 
         Shoes[] FindShoes()
@@ -75,6 +79,51 @@ namespace NeBeatStreet.Pages
 
         private void ToCartButton_Click(object sender, RoutedEventArgs e)
         {
+            var shoesforcart = ShoesList.SelectedItems.Cast<Shoes>().ToList();
+            if (shoesforcart.Count > 0)
+            {
+                try
+                {
+                    var button = sender as Button;
+                    int selectg = Convert.ToInt32(button.Tag);
+                    int idUsers = Convert.ToInt32(App.Current.Properties["Id"].ToString());
+                    int selectedGoodsId = ((Shoes)ShoesList.SelectedItem).IdShoes;
+
+
+                    var order = Entities2.GetContext().Order.FirstOrDefault(o => o.IdUsers == idUsers);
+                    if (order == null)
+                    {
+                        order = new Order()
+                        {
+                            IdUsers = idUsers,
+                            IdStatus = 2
+                        };
+                        Entities2.GetContext().Order.Add(order);
+                        Entities2.GetContext().SaveChanges();
+                    }
+
+                    CartTable cartnew = new CartTable()
+                    {
+                        OrderId = order.IdOrder,
+                        ShoeId = selectedGoodsId
+                    };
+
+                    Entities2.GetContext().CartTable.Add(cartnew);
+                    Entities2.GetContext().SaveChanges();
+
+                    MessageBox.Show("Товар успешно добавлен в корзину!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+
+                    AppFrame.MainFraim.Navigate(new Cart());
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Произошла ошибка при добавлении товара в корзину: " + ex.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Выберите товар из списка!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
             AppFrame.MainFraim.Navigate(new Cart());
         }
 

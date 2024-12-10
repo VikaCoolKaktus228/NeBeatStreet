@@ -74,7 +74,7 @@
     </Compile>
     <Compile Include="AppData\AppConnect.cs" />
     <Compile Include="AppData\AppFrame.cs" />
-    <Compile Include="AppData\Cart.cs">
+    <Compile Include="AppData\CartTable.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Model1.Context.cs">
@@ -138,7 +138,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Pages\AboutOrderPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\AddEditShoes.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\AddEditUsers.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -172,8 +180,14 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Pages\AboutOrderPage.xaml.cs">
+      <DependentUpon>AboutOrderPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\AddEditShoes.xaml.cs">
       <DependentUpon>AddEditShoes.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddEditUsers.xaml.cs">
+      <DependentUpon>AddEditUsers.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AdminList.xaml.cs">
       <DependentUpon>AdminList.xaml</DependentUpon>
@@ -229,24 +243,28 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
-    <Content Include="AppData\Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="AppData\Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <Resource Include="Images\kindpng_2158013 %281%29.png" />
     <Resource Include="Images\cart.png" />
     <Resource Include="Images\149309.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AppData\Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="AppData\Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <Resource Include="Images\free-icon-arrow-4629412.png" />
+    <Resource Include="Images\Untitled252_20241210063850.png" />
+    <Resource Include="Images\щкв.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

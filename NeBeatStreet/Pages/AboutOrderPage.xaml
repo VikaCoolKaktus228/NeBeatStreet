@@ -1,0 +1,64 @@
+﻿<Page x:Class="NeBeatStreet.Pages.AboutOrderPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NeBeatStreet.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AboutOrderPage">
+
+    <Grid Background="White">
+        <Label Content="Заказ" HorizontalAlignment="Left" Margin="343,0,0,0" VerticalAlignment="Top" Foreground="Black" FontSize="36" FontFamily="Arial Black" Width="134"/>
+        <Label x:Name="labeluser" Content="" HorizontalAlignment="Left" Margin="168,175,0,0" VerticalAlignment="Top" Height="51" Width="192" Background="{x:Null}" Panel.ZIndex="1" FontSize="14" FontFamily="Arial Black"/>
+        <Label Content="Пользователь" HorizontalAlignment="Left" Margin="11,173,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="18" FontFamily="Cascadia Mono SemiLight"/>
+        <Label Content="Статус" HorizontalAlignment="Left" Margin="11,240,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="18" FontFamily="Cascadia Mono SemiLight"/>
+        <Label x:Name="labelId" Content="" HorizontalAlignment="Left" Margin="54,120,0,0" VerticalAlignment="Top" Height="53" Width="86" Background="{x:Null}" Panel.ZIndex="1" FontSize="14" FontFamily="Arial Black"/>
+        <Label Content="Id" HorizontalAlignment="Left" Margin="11,112,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="18" FontFamily="Cascadia Mono SemiLight"/>
+        <Label Content="Содержание" HorizontalAlignment="Left" Margin="528,96,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cascadia Mono SemiLight"/>
+        <ComboBox x:Name="orderstatuscombo"  ItemsSource="{Binding Status}" 
+                      DisplayMemberPath="StatusName"
+                      SelectedValuePath="StatusId"
+                      SelectedValue="{Binding IdStatus}" HorizontalAlignment="Left" Margin="98,244,0,0" VerticalAlignment="Top" Width="120" Height="22" DropDownOpened="orderstatuscombo_DropDownOpened">
+            <ComboBox.Background>
+                <LinearGradientBrush EndPoint="0,1">
+                    <GradientStop Color="#FFF0F0F0"/>
+                    <GradientStop Color="#FFEDFAFF" Offset="1"/>
+                </LinearGradientBrush>
+            </ComboBox.Background>
+        </ComboBox>
+        <Button x:Name="changestatusbttn" Content="изменить статус" HorizontalAlignment="Left" Margin="210,284,0,0" VerticalAlignment="Top" Height="22" Width="108" Foreground="#FF0800FF" IsEnabled="False" Click="changestatusbttn_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,399">
+            <Button x:Name="GoBackButton" Margin="0,0,681,0" Background="{x:Null}" BorderBrush="Black" Click="GoBackButton_Click">
+                <Image Height="41" Width="108" Source="/Images/free-icon-arrow-4629412.png"/>
+            </Button>
+        </Border>
+        <ListView x:Name="AboutOrderList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="365,134,12,20" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="100"/>
+                            <ColumnDefinition Width="166"/>
+                            <ColumnDefinition Width="156"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Grid.Column="0">
+                            <Image Source="{Binding CurrentPhoto}" Height="143"/>
+                        </StackPanel>
+                        <StackPanel Grid.Column="1">
+                            <TextBlock FontFamily="Arial Black"><Run Text="{Binding ShoesName}" FontSize="24"/></TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black" FontSize="18"><Run Text="{Binding ShoesType.NameType}"/></TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black"><Run Text="Артикул: "/><Run Text=" "/><Run Text="{Binding Article}"/></TextBlock>
+
+                            <TextBlock><Run Text="{Binding ShoesFirm.NameFirm}" FontFamily="Impact" FontSize="16"/></TextBlock>
+                        </StackPanel>
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Margin="0,0,30,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="20"><Run Text="{Binding Price}"/><Run Text=" "/><Run Text="руб."/></TextBlock>
+
+                        </StackPanel>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </Grid>
+</Page>

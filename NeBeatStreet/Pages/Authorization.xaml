@@ -11,13 +11,13 @@
     <Grid Background="White">
         <Label Content="Авторизация" HorizontalAlignment="Left" Margin="268,10,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="36">
             <Label.Foreground>
-                <SolidColorBrush Color="#FF346288" Opacity="1"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
         <Button x:Name="EnterButton" Content="войти" HorizontalAlignment="Center" Margin="0,346,0,0" VerticalAlignment="Top" Height="43" Width="156" BorderBrush="#FF16388E" Background="#FF485F9A" Foreground="White" FontFamily="Britannic Bold" FontSize="16" Click="EnterButton_Click"/>
         <Button x:Name="RegistrationButton" Content="регистрация" HorizontalAlignment="Center" Margin="0,394,0,0" VerticalAlignment="Top" Height="34" Width="156" BorderBrush="{x:Null}" Background="#FF6DD4FF" Foreground="#FF0D143A" FontFamily="Britannic Bold" FontSize="16" Click="RegistrationButton_Click"/>
-        <Label Content="Введите логин" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="16" Foreground="#FF346288"/>
-        <Label Content="Введите пароль" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="16" Foreground="#FF346288"/>
+        <Label Content="Введите логин" HorizontalAlignment="Center" Margin="0,100,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="16" Foreground="Black"/>
+        <Label Content="Введите пароль" HorizontalAlignment="Center" Margin="0,197,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="16" Foreground="Black"/>
         <TextBox x:Name="LoginTb" HorizontalAlignment="Left" Margin="322,145,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="166" Height="27"/>
         <PasswordBox x:Name="PasswordTb" HorizontalAlignment="Left" Margin="322,250,0,0" VerticalAlignment="Top" Width="166" Height="29"/>
 

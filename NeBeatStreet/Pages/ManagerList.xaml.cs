@@ -1,4 +1,5 @@
-﻿using System;
+﻿using NeBeatStreet.AppData;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,26 @@ namespace NeBeatStreet.Pages
         public ManagerList()
         {
             InitializeComponent();
+            List<Order> ordersman = AppConnect.shoesmodel.Order.ToList();
+            OrderList.ItemsSource = ordersman;
+        }
+
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.MainFraim.Navigate(new Authorization());
+        }
+
+        private void AboutOrderButton_Click(object sender, RoutedEventArgs e)
+        {
+            var moreorder = OrderList.SelectedItems.Cast<Order>().ToList();
+            if (moreorder.Count > 0)
+            {
+                AppFrame.MainFraim.Navigate(new AboutOrderPage((sender as Button).DataContext as Order));
+            }
+            else
+            {
+                MessageBox.Show("выберите заказ!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
     }
 }

@@ -9,24 +9,24 @@
 
 namespace NeBeatStreet.AppData
 {
+    
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities : DbContext
+    public partial class Entities2 : DbContext
     {
-        private static Entities _context;
-        public Entities()
-            : base("name=Entities")
+        private static Entities2 _context;
+        public Entities2()
+            : base("name=Entities2")
         {
         }
-
-        public static Entities GetContext()
+        public static Entities2 GetContext()
         {
-            if( _context == null )
-                _context = new Entities();
+            if (_context == null)
+                _context = new Entities2();
             return _context;
         }
     
@@ -35,7 +35,7 @@ namespace NeBeatStreet.AppData
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Cart> Cart { get; set; }
+        public virtual DbSet<CartTable> CartTable { get; set; }
         public virtual DbSet<Order> Order { get; set; }
         public virtual DbSet<OrderManager> OrderManager { get; set; }
         public virtual DbSet<Role> Role { get; set; }

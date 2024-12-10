@@ -12,13 +12,13 @@ namespace NeBeatStreet.AppData
     using System;
     using System.Collections.Generic;
     
-    public partial class Cart
+    public partial class CartTable
     {
         public int IdCart { get; set; }
-        public int UserId { get; set; }
+        public int OrderId { get; set; }
         public int ShoeId { get; set; }
     
+        public virtual Order Order { get; set; }
         public virtual Shoes Shoes { get; set; }
-        public virtual User User { get; set; }
     }
 }

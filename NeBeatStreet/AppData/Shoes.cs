@@ -17,12 +17,13 @@ namespace NeBeatStreet.AppData
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Shoes()
         {
-            this.Cart = new HashSet<Cart>();
+            this.CartTable = new HashSet<CartTable>();
             this.OrderManager = new HashSet<OrderManager>();
             this.Size = new HashSet<Size>();
         }
     
         public int IdShoes { get; set; }
+        public string ShoesName { get; set; }
         public int TypeOfShoes { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
@@ -31,25 +32,9 @@ namespace NeBeatStreet.AppData
         public string Article { get; set; }
         public int Firm { get; set; }
         public string Photo { get; set; }
-
-        public string CurrentPhoto
-        {
-            get
-            {
-                if (string.IsNullOrEmpty(Photo) || string.IsNullOrWhiteSpace(Photo))
-                {
-                    return "/Images/picture.png";
-
-                }
-                else
-                {
-                    return "/Images/" + Photo;
-                }
-            }
-        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Cart> Cart { get; set; }
+        public virtual ICollection<CartTable> CartTable { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<OrderManager> OrderManager { get; set; }
         public virtual ShoesColor ShoesColor { get; set; }

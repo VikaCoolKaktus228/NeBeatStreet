@@ -9,7 +9,7 @@
       Title="Cart">
 
     <Grid Background="White">
-        <ListView x:Name="ShoesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,76,58,78" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListView x:Name="CartList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,76,58,78" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -26,7 +26,7 @@
                                 <Run Text="{Binding ShoesName}" FontSize="24"></Run>
                             </TextBlock>
                             <TextBlock FontFamily="Source Code Pro Black" FontSize="18">
-                                <Run Text="{Binding ShoesType.TypeName}"></Run>
+                                <Run Text="{Binding ShoesType.NameType}"></Run>
                             </TextBlock>
                             <TextBlock FontFamily="Source Code Pro Black">
                                 <Run Text="Артикул: "></Run>
@@ -34,7 +34,7 @@
                             </TextBlock>
 
                             <TextBlock>
-                                <Run Text="{Binding ShoesFrim.NameFirm}" FontFamily="Impact" FontSize="16"></Run>
+                                <Run Text="{Binding ShoesFirm.NameFirm}" FontFamily="Impact" FontSize="16"></Run>
                             </TextBlock>
                         </StackPanel>
                         <StackPanel Grid.Column="2">
@@ -42,6 +42,7 @@
                                 <Run Text="{Binding Price}"></Run>
                                 <Run Text="руб."></Run>
                             </TextBlock>
+                            <Button x:Name="RemoveFromCart" Content="убрать" Height="29" Width="152" Background="#FF0A07FF" Foreground="White" Margin="0,10,0,0" Click="RemoveFromCart_Click"/>
 
                         </StackPanel>
                     </Grid>
@@ -53,6 +54,6 @@
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <Button x:Name="OrderButton" Content="Заказать" HorizontalAlignment="Center" Margin="0,394,0,0" VerticalAlignment="Top" Height="46" Width="132" Foreground="#FF001BF9" Background="#FFFCFDFF"/>
+        <Button x:Name="OrderButton" Content="Заказать" HorizontalAlignment="Center" Margin="0,394,0,0" VerticalAlignment="Top" Height="46" Width="132" Foreground="#FF001BF9" Background="#FFFCFDFF" Click="OrderButton_Click"/>
     </Grid>
 </Page>
