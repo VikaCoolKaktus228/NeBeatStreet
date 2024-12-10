@@ -14,42 +14,42 @@
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <TextBox x:Name="FirstNameTb" HorizontalAlignment="Left" Margin="32,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" KeyDown="FirstNameTb_KeyDown"/>
-        <TextBox x:Name="EmailTb" HorizontalAlignment="Left" Margin="32,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34"/>
-        <TextBox x:Name="PhoneTb" HorizontalAlignment="Left" Margin="32,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="16" Height="33" KeyDown="PhoneTb_KeyDown"/>
-        <TextBox x:Name="LoginTb" HorizontalAlignment="Left" Margin="529,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33"/>
-        <PasswordBox x:Name="PasswordTb" HorizontalAlignment="Left" Margin="529,0,0,0" VerticalAlignment="Center" Width="216" Height="34" PasswordChanged="PasswordTb_PasswordChanged"/>
+        <TextBox x:Name="FirstNameTb" HorizontalAlignment="Left" Margin="32,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" KeyDown="FirstNameTb_KeyDown" BorderBrush="Black"/>
+        <TextBox x:Name="EmailTb" HorizontalAlignment="Left" Margin="32,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34" BorderBrush="Black"/>
+        <TextBox x:Name="PhoneTb" HorizontalAlignment="Left" Margin="32,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="16" Height="33" KeyDown="PhoneTb_KeyDown" BorderBrush="Black"/>
+        <TextBox x:Name="LoginTb" HorizontalAlignment="Left" Margin="529,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" BorderBrush="Black"/>
+        <PasswordBox x:Name="PasswordTb" HorizontalAlignment="Left" Margin="529,0,0,0" VerticalAlignment="Center" Width="216" Height="34" PasswordChanged="PasswordTb_PasswordChanged" BorderBrush="Black"/>
         <Button x:Name="RegistrateButton" Content="Зарегистрироваться" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="47" Width="212" Background="#FF0309E9" Foreground="White" FontFamily="Cascadia Code SemiLight" FontSize="18" Click="RegistrateButton_Click"/>
         <Button x:Name="GoBackButton" Content="назад" HorizontalAlignment="Left" Margin="659,0,0,0" VerticalAlignment="Top" Height="51" Width="141" Background="{x:Null}" Foreground="Black" FontFamily="Arial Black" FontSize="14" Click="GoBackButton_Click" BorderBrush="Black" Panel.ZIndex="1"/>
         <Label Content="Введите имя" HorizontalAlignment="Left" Margin="32,91,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="22">
             <Label.Foreground>
-                <SolidColorBrush Color="#FF1B2E3E" Opacity="1"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
         <Label Content="Введите Email" HorizontalAlignment="Left" Margin="32,175,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="22">
             <Label.Foreground>
-                <SolidColorBrush Color="#FF1B2E3E" Opacity="1"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
         <Label Content="Введите телефон" HorizontalAlignment="Left" Margin="32,255,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="22">
             <Label.Foreground>
-                <SolidColorBrush Color="#FF1B2E3E" Opacity="1"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
         <Label Content="Введите логин" HorizontalAlignment="Left" Margin="529,85,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="22">
             <Label.Foreground>
-                <SolidColorBrush Color="#FF1B2E3E" Opacity="1"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <PasswordBox x:Name="RepeatPasswordTb" HorizontalAlignment="Left" Margin="529,287,0,0" VerticalAlignment="Top" Width="216" Height="34" PasswordChanged="RepeatPasswordTb_PasswordChanged"/>
+        <PasswordBox x:Name="RepeatPasswordTb" HorizontalAlignment="Left" Margin="529,287,0,0" VerticalAlignment="Top" Width="216" Height="34" PasswordChanged="RepeatPasswordTb_PasswordChanged" BorderBrush="Black"/>
         <Label Content="Введите пароль" HorizontalAlignment="Left" Margin="529,169,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="22">
             <Label.Foreground>
-                <SolidColorBrush Color="#FF1B2E3E" Opacity="1"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
         <Label Content="Повторите пароль" HorizontalAlignment="Left" Margin="529,254,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code" FontSize="22">
             <Label.Foreground>
-                <SolidColorBrush Color="#FF1B2E3E" Opacity="1"/>
+                <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" Height="51" VerticalAlignment="Top" Width="800"/>

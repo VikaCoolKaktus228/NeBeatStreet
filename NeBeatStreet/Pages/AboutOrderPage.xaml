@@ -15,7 +15,7 @@
         <Label Content="Статус" HorizontalAlignment="Left" Margin="11,240,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="18" FontFamily="Cascadia Mono SemiLight"/>
         <Label x:Name="labelId" Content="" HorizontalAlignment="Left" Margin="54,120,0,0" VerticalAlignment="Top" Height="53" Width="86" Background="{x:Null}" Panel.ZIndex="1" FontSize="14" FontFamily="Arial Black"/>
         <Label Content="Id" HorizontalAlignment="Left" Margin="11,112,0,0" VerticalAlignment="Top" Panel.ZIndex="1" FontSize="18" FontFamily="Cascadia Mono SemiLight"/>
-        <Label Content="Содержание" HorizontalAlignment="Left" Margin="528,96,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cascadia Mono SemiLight"/>
+        <Label Content="Содержание" HorizontalAlignment="Left" Margin="528,96,0,0" VerticalAlignment="Top" FontSize="20" FontFamily="Cascadia Mono SemiLight" FontWeight="Bold"/>
         <ComboBox x:Name="orderstatuscombo"  ItemsSource="{Binding Status}" 
                       DisplayMemberPath="StatusName"
                       SelectedValuePath="StatusId"
@@ -27,7 +27,7 @@
                 </LinearGradientBrush>
             </ComboBox.Background>
         </ComboBox>
-        <Button x:Name="changestatusbttn" Content="изменить статус" HorizontalAlignment="Left" Margin="210,284,0,0" VerticalAlignment="Top" Height="22" Width="108" Foreground="#FF0800FF" IsEnabled="False" Click="changestatusbttn_Click"/>
+        <Button x:Name="changestatusbttn" Content="изменить статус" HorizontalAlignment="Left" Margin="210,284,0,0" VerticalAlignment="Top" Height="50" Width="118" Foreground="Black" IsEnabled="False" Click="changestatusbttn_Click" Background="White" BorderBrush="Black" FontFamily="Cascadia Code SemiLight"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,399">
             <Button x:Name="GoBackButton" Margin="0,0,681,0" Background="{x:Null}" BorderBrush="Black" Click="GoBackButton_Click">
                 <Image Height="41" Width="108" Source="/Images/free-icon-arrow-4629412.png"/>
@@ -39,16 +39,16 @@
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="100"/>
-                            <ColumnDefinition Width="166"/>
-                            <ColumnDefinition Width="156"/>
+                            <ColumnDefinition Width="175"/>
+                            <ColumnDefinition Width="147"/>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
                             <Image Source="{Binding CurrentPhoto}" Height="143"/>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <TextBlock FontFamily="Arial Black"><Run Text="{Binding ShoesName}" FontSize="24"/></TextBlock>
-                            <TextBlock FontFamily="Source Code Pro Black" FontSize="18"><Run Text="{Binding ShoesType.NameType}"/></TextBlock>
-                            <TextBlock FontFamily="Source Code Pro Black"><Run Text="Артикул: "/><Run Text=" "/><Run Text="{Binding Article}"/></TextBlock>
+                            <TextBlock FontFamily="Arial Black" Width="171" Height="38"><Run Text="{Binding ShoesName}" FontSize="18"/></TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black" FontSize="12"><Run Text="{Binding ShoesType.NameType}"/></TextBlock>
+                            <TextBlock FontFamily="Source Code Pro Black"><Run Text="Артикул: " FontSize="11"/><Run Text=" "/><Run Text="{Binding Article}" FontSize="11"/></TextBlock>
 
                             <TextBlock><Run Text="{Binding ShoesFirm.NameFirm}" FontFamily="Impact" FontSize="16"/></TextBlock>
                         </StackPanel>

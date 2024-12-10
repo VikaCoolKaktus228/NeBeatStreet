@@ -47,7 +47,7 @@ namespace NeBeatStreet.Pages
                         case 1:
                             App.Current.Properties["Id"] = userobj.IdUser;
                             MessageBox.Show("Здравствуйте, пользователь " + userobj.FirstName, "Вход", MessageBoxButton.OK, MessageBoxImage.Information);
-                            AppFrame.MainFraim.Navigate(new UserList());
+                            AppFrame.MainFraim.Navigate(new UserList((sender as Button).DataContext as User));
                             break;
                         case 2:
                             MessageBox.Show("Здравствуйте, администратор " + userobj.FirstName, "Вход", MessageBoxButton.OK, MessageBoxImage.Information);

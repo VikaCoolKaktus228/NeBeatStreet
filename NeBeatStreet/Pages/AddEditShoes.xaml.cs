@@ -30,13 +30,13 @@ namespace NeBeatStreet.Pages
                 thisshoes = selectedshoes;
             }
             ComboType.Items.Clear();
-            ComboType.ItemsSource = Entities2.GetContext().ShoesType.ToList();
+            ComboType.ItemsSource = Entities4.GetContext().ShoesType.ToList();
             ComboMaterial.Items.Clear();
-            ComboMaterial.ItemsSource = Entities2.GetContext().ShoesMaterial.ToList();
+            ComboMaterial.ItemsSource = Entities4.GetContext().ShoesMaterial.ToList();
             ComboColor.Items.Clear();
-            ComboColor.ItemsSource = Entities2.GetContext().ShoesColor.ToList();
+            ComboColor.ItemsSource = Entities4.GetContext().ShoesColor.ToList();
             ComboFirm.Items.Clear();
-            ComboFirm.ItemsSource = Entities2.GetContext().ShoesFirm.ToList();
+            ComboFirm.ItemsSource = Entities4.GetContext().ShoesFirm.ToList();
             DataContext = thisshoes;
 
         }
@@ -78,7 +78,7 @@ namespace NeBeatStreet.Pages
                     thisshoes.TypeOfShoes = ComboType.SelectedIndex + 1;
                     thisshoes.Firm = ComboFirm.SelectedIndex + 1;
                     thisshoes.Material = ComboMaterial.SelectedIndex + 1;
-                    thisshoes.Price = Convert./*ToDecimal*/ToInt32(PriceTb.Text);
+                    thisshoes.Price = Convert.ToDecimal(PriceTb.Text);
                     thisshoes.Description = DescriptionTb.Text;
                     thisshoes.Article = ArticleTb.Text;
                     thisshoes.Photo = thisshoes.Photo;
@@ -102,7 +102,7 @@ namespace NeBeatStreet.Pages
         {
             if (string.IsNullOrEmpty(NameShoesTb.Text) || string.IsNullOrEmpty(DescriptionTb.Text)
                 || string.IsNullOrEmpty(ArticleTb.Text) || ComboColor.SelectedIndex < 0 || ComboFirm.SelectedIndex < 0 || ComboMaterial.SelectedIndex < 0
-                || ComboType.SelectedIndex < 0 || string.IsNullOrEmpty(PriceTb.Text) && Convert.ToInt32(PriceTb.Text) <= 0)
+                || ComboType.SelectedIndex < 0 || string.IsNullOrEmpty(PriceTb.Text) && Convert.ToDecimal(PriceTb.Text) <= 0)
             {
                 MessageBox.Show("Корректно заполните все данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;

@@ -97,11 +97,11 @@ namespace NeBeatStreet.Pages
                 {
                     try
                     {
-                        Entities2.GetContext().Shoes.RemoveRange(shoesfordeleting);
-                        Entities2.GetContext().SaveChanges();
+                        Entities4.GetContext().Shoes.RemoveRange(shoesfordeleting);
+                        Entities4.GetContext().SaveChanges();
                         MessageBox.Show("Данные удалены");
 
-                        ShoesList.ItemsSource = Entities2.GetContext().Shoes.ToList();
+                        ShoesList.ItemsSource = Entities4.GetContext().Shoes.ToList();
                         FindShoes();
                     }
                     catch (Exception ex)

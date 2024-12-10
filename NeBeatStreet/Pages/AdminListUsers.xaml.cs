@@ -48,11 +48,11 @@ namespace NeBeatStreet.Pages
                 {
                     try
                     {
-                        Entities2.GetContext().User.RemoveRange(usersfordeleting);
-                        Entities2.GetContext().SaveChanges();
+                        Entities4.GetContext().User.RemoveRange(usersfordeleting);
+                        Entities4.GetContext().SaveChanges();
                         MessageBox.Show("Данные удалены");
 
-                        userlist.ItemsSource = Entities2.GetContext().User.ToList();
+                        userlist.ItemsSource = Entities4.GetContext().User.ToList();
                     }
                     catch (Exception ex)
                     {

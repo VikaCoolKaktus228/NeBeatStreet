@@ -18,7 +18,7 @@ namespace NeBeatStreet.AppData
         public int OrderId { get; set; }
         public int ShoeId { get; set; }
     
-        public virtual Order Order { get; set; }
         public virtual Shoes Shoes { get; set; }
+        public virtual Order Order { get; set; }
     }
 }

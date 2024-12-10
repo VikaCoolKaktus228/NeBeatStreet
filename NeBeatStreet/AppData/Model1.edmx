@@ -43,7 +43,7 @@
           <Property Name="IdShoes" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ShoesName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TypeOfShoes" Type="int" Nullable="false" />
-          <Property Name="Price" Type="int" Nullable="false" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Material" Type="int" Nullable="false" />
           <Property Name="Color" Type="int" Nullable="false" />
@@ -116,6 +116,20 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserRole" Type="int" Nullable="false" />
         </EntityType>
+        <Association Name="FK_Cart_Shoes">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="IdShoes" />
+            </Principal>
+            <Dependent Role="CartTable">
+              <PropertyRef Name="ShoeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CartTable_Order">
           <End Role="Order" Type="Self.Order" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -127,20 +141,6 @@
             </Principal>
             <Dependent Role="CartTable">
               <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CartTable_Shoes">
-          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shoes">
-              <PropertyRef Name="IdShoes" />
-            </Principal>
-            <Dependent Role="CartTable">
-              <PropertyRef Name="ShoeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -329,12 +329,12 @@
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_CartTable_Order" Association="Self.FK_CartTable_Order">
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_Cart_Shoes" Association="Self.FK_Cart_Shoes">
+            <End Role="Shoes" EntitySet="Shoes" />
             <End Role="CartTable" EntitySet="CartTable" />
           </AssociationSet>
-          <AssociationSet Name="FK_CartTable_Shoes" Association="Self.FK_CartTable_Shoes">
-            <End Role="Shoes" EntitySet="Shoes" />
+          <AssociationSet Name="FK_CartTable_Order" Association="Self.FK_CartTable_Order">
+            <End Role="Order" EntitySet="Order" />
             <End Role="CartTable" EntitySet="CartTable" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
@@ -390,8 +390,8 @@
           <Property Name="IdCart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="ShoeId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Shoes" Relationship="Self.FK_Cart_Shoes" FromRole="CartTable" ToRole="Shoes" />
           <NavigationProperty Name="Order" Relationship="Self.FK_CartTable_Order" FromRole="CartTable" ToRole="Order" />
-          <NavigationProperty Name="Shoes" Relationship="Self.FK_CartTable_Shoes" FromRole="CartTable" ToRole="Shoes" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -430,14 +430,14 @@
           <Property Name="IdShoes" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ShoesName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="TypeOfShoes" Type="Int32" Nullable="false" />
-          <Property Name="Price" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" Nullable="false" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Material" Type="Int32" Nullable="false" />
           <Property Name="Color" Type="Int32" Nullable="false" />
           <Property Name="Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Firm" Type="Int32" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CartTable" Relationship="Self.FK_CartTable_Shoes" FromRole="Shoes" ToRole="CartTable" />
+          <NavigationProperty Name="CartTable" Relationship="Self.FK_Cart_Shoes" FromRole="Shoes" ToRole="CartTable" />
           <NavigationProperty Name="OrderManager" Relationship="Self.FK_OrderManager_Shoes" FromRole="Shoes" ToRole="OrderManager" />
           <NavigationProperty Name="ShoesColor" Relationship="Self.FK_Shoes_ShoesColor" FromRole="Shoes" ToRole="ShoesColor" />
           <NavigationProperty Name="ShoesFirm" Relationship="Self.FK_Shoes_ShoesFirm" FromRole="Shoes" ToRole="ShoesFirm" />
@@ -518,6 +518,20 @@
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
+        <Association Name="FK_Cart_Shoes">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="IdShoes" />
+            </Principal>
+            <Dependent Role="CartTable">
+              <PropertyRef Name="ShoeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CartTable_Order">
           <End Role="Order" Type="Self.Order" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -529,20 +543,6 @@
             </Principal>
             <Dependent Role="CartTable">
               <PropertyRef Name="OrderId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_CartTable_Shoes">
-          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shoes">
-              <PropertyRef Name="IdShoes" />
-            </Principal>
-            <Dependent Role="CartTable">
-              <PropertyRef Name="ShoeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -686,7 +686,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities4" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CartTable" EntityType="Self.CartTable" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderManager" EntityType="Self.OrderManager" />
@@ -700,12 +700,12 @@
           <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_CartTable_Order" Association="Self.FK_CartTable_Order">
-            <End Role="Order" EntitySet="Order" />
+          <AssociationSet Name="FK_Cart_Shoes" Association="Self.FK_Cart_Shoes">
+            <End Role="Shoes" EntitySet="Shoes" />
             <End Role="CartTable" EntitySet="CartTable" />
           </AssociationSet>
-          <AssociationSet Name="FK_CartTable_Shoes" Association="Self.FK_CartTable_Shoes">
-            <End Role="Shoes" EntitySet="Shoes" />
+          <AssociationSet Name="FK_CartTable_Order" Association="Self.FK_CartTable_Order">
+            <End Role="Order" EntitySet="Order" />
             <End Role="CartTable" EntitySet="CartTable" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
@@ -795,7 +795,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities2">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities4">
           <EntitySetMapping Name="CartTable">
             <EntityTypeMapping TypeName="Model.CartTable">
               <MappingFragment StoreEntitySet="CartTable">

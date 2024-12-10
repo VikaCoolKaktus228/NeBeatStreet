@@ -25,7 +25,7 @@ namespace NeBeatStreet.AppData
         public int IdShoes { get; set; }
         public string ShoesName { get; set; }
         public int TypeOfShoes { get; set; }
-        public int Price { get; set; }
+        public decimal Price { get; set; }
         public string Description { get; set; }
         public int Material { get; set; }
         public int Color { get; set; }

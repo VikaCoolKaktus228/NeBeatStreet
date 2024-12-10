@@ -9,7 +9,7 @@
       Title="Cart">
 
     <Grid Background="White">
-        <ListView x:Name="CartList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,76,58,78" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListView x:Name="CartList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="58,76,58,78" ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -49,11 +49,15 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <Label Content="Корзина" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="36">
+        <Label Content="Корзина" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="36">
             <Label.Foreground>
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <Button x:Name="OrderButton" Content="Заказать" HorizontalAlignment="Center" Margin="0,394,0,0" VerticalAlignment="Top" Height="46" Width="132" Foreground="#FF001BF9" Background="#FFFCFDFF" Click="OrderButton_Click"/>
+        <Button x:Name="OrderButton" Content="Заказать" HorizontalAlignment="Center" Margin="0,394,0,0" VerticalAlignment="Top" Height="46" Width="132" Foreground="Black" Background="{x:Null}" Click="OrderButton_Click" BorderBrush="Black" FontFamily="Arial Black" FontSize="16"/>
+        <Button x:Name="GoBackButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="51" Width="77" Background="{x:Null}" Foreground="Black" FontFamily="Cascadia Mono SemiBold" BorderBrush="Black" Click="GoBackButton_Click">
+            <Image HorizontalAlignment="Left" Height="57" VerticalAlignment="Center" Width="63" Source="/Images/free-icon-arrow-4629412.png"/>
+        </Button>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,399"/>
     </Grid>
 </Page>

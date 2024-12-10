@@ -27,11 +27,14 @@ namespace NeBeatStreet.Pages
             InitializeComponent();
             List<Shoes> listshoes = AppConnect.shoesmodel.Shoes.ToList();
             ShoesList.ItemsSource = listshoes;
+           
             ComboSort.Items.Add("По уменьшению цены");
             ComboSort.Items.Add("По возрастанию цены");
+            ComboFilter.Items.Add("Все");
             ComboFilter.Items.Add("цена от 0 до 1000");
             ComboFilter.Items.Add("цена от 1000 до 5000");
             ComboFilter.Items.Add("цена от 5000");
+            ComboFilter.SelectedIndex = 0;
             DataContext = curuser;
         }
 
@@ -49,13 +52,13 @@ namespace NeBeatStreet.Pages
                 switch (ComboFilter.SelectedIndex)
                 {
 
-                    case 0:
+                    case 1:
                         oneshoes = oneshoes.Where(x => x.Price >= 0 && x.Price < 1000).ToList();
                         break;
-                    case 1:
+                    case 2:
                         oneshoes = oneshoes.Where(x => x.Price >= 1000 && x.Price < 5000).ToList();
                         break;
-                    case 2:
+                    case 3:
                         oneshoes = oneshoes.Where(x => x.Price > 5000).ToList();
                         break;
                 }
@@ -79,6 +82,11 @@ namespace NeBeatStreet.Pages
 
         private void ToCartButton_Click(object sender, RoutedEventArgs e)
         {
+            AppFrame.MainFraim.Navigate(new Cart());
+        }
+
+        private void AddToCart_Click(object sender, RoutedEventArgs e)
+        {
             var shoesforcart = ShoesList.SelectedItems.Cast<Shoes>().ToList();
             if (shoesforcart.Count > 0)
             {
@@ -90,7 +98,7 @@ namespace NeBeatStreet.Pages
                     int selectedGoodsId = ((Shoes)ShoesList.SelectedItem).IdShoes;
 
 
-                    var order = Entities2.GetContext().Order.FirstOrDefault(o => o.IdUsers == idUsers);
+                    var order = Entities4.GetContext().Order.FirstOrDefault(o => o.IdUsers == idUsers);
                     if (order == null)
                     {
                         order = new Order()
@@ -98,8 +106,8 @@ namespace NeBeatStreet.Pages
                             IdUsers = idUsers,
                             IdStatus = 2
                         };
-                        Entities2.GetContext().Order.Add(order);
-                        Entities2.GetContext().SaveChanges();
+                        Entities4.GetContext().Order.Add(order);
+                        Entities4.GetContext().SaveChanges();
                     }
 
                     CartTable cartnew = new CartTable()
@@ -108,8 +116,8 @@ namespace NeBeatStreet.Pages
                         ShoeId = selectedGoodsId
                     };
 
-                    Entities2.GetContext().CartTable.Add(cartnew);
-                    Entities2.GetContext().SaveChanges();
+                    Entities4.GetContext().CartTable.Add(cartnew);
+                    Entities4.GetContext().SaveChanges();
 
                     MessageBox.Show("Товар успешно добавлен в корзину!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
 
@@ -125,11 +133,7 @@ namespace NeBeatStreet.Pages
                 MessageBox.Show("Выберите товар из списка!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             AppFrame.MainFraim.Navigate(new Cart());
-        }
-
-        private void AddToCart_Click(object sender, RoutedEventArgs e)
-        {
-            AppFrame.MainFraim.Navigate(new Cart());
+            
         }
 
         private void SearchTb_TextChanged(object sender, TextChangedEventArgs e)

@@ -14,10 +14,10 @@
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <TextBox x:Name="NameShoesTb" Text="{Binding ShoesName}" HorizontalAlignment="Left" Margin="10,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="29"/>
-        <TextBox x:Name="ArticleTb" Text="{Binding Article}" HorizontalAlignment="Left" Margin="10,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="29"/>
-        <TextBox x:Name="PriceTb" Text="{Binding Price}" HorizontalAlignment="Left" Margin="10,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="29"/>
-        <TextBox x:Name="DescriptionTb" Text="{Binding Description}" HorizontalAlignment="Left" Margin="10,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="138"/>
+        <TextBox x:Name="NameShoesTb" Text="{Binding ShoesName}" HorizontalAlignment="Left" Margin="10,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="175" Height="29" BorderBrush="Black"/>
+        <TextBox x:Name="ArticleTb" Text="{Binding Article}" HorizontalAlignment="Left" Margin="10,176,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="29" BorderBrush="Black"/>
+        <TextBox x:Name="PriceTb" Text="{Binding Price}" HorizontalAlignment="Left" Margin="10,236,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="128" Height="29" BorderBrush="Black"/>
+        <TextBox x:Name="DescriptionTb" Text="{Binding Description}" HorizontalAlignment="Left" Margin="10,302,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" Height="138" BorderBrush="Black"/>
         <Label Content="Введите название" HorizontalAlignment="Left" Margin="10,80,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="14">
             <Label.Foreground>
                 <SolidColorBrush Color="Black" Opacity="1"/>
@@ -67,7 +67,11 @@
             <ComboBox HorizontalAlignment="Left" VerticalAlignment="Top" Width="177"/>
         </ComboBox>
         <Button x:Name="AddEditButton" Content="Сохранить" HorizontalAlignment="Left" Margin="631,396,0,0" VerticalAlignment="Top" Height="44" Width="156" Background="#FF0901F5" Foreground="White" FontFamily="Cascadia Mono SemiBold" Click="AddEditButton_Click_1"/>
-        <Button x:Name="GoBackButton" Content="назад" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="26" Width="78" Background="#FFA1B0CE" Foreground="#FF223B4E" FontFamily="Cascadia Mono SemiBold" Click="GoBackButton_Click"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,399">
+            <Button x:Name="GoBackButton" HorizontalAlignment="Left" VerticalAlignment="Center" Height="51" Width="77" Background="{x:Null}" Foreground="Black" FontFamily="Cascadia Mono SemiBold" Click="GoBackButton_Click" BorderBrush="Black" Margin="-1,0,0,0">
+                <Image HorizontalAlignment="Left" Height="57" VerticalAlignment="Center" Width="63" Source="/Images/free-icon-arrow-4629412.png"/>
+            </Button>
+        </Border>
 
     </Grid>
 </Page>

@@ -9,7 +9,7 @@
       Title="UserList">
 
     <Grid Background="White">
-        <ListView x:Name="ShoesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,86,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListView x:Name="ShoesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,128,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -22,11 +22,11 @@
                             <Image Source="{Binding CurrentPhoto}" Height="143"></Image>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
-                            <TextBlock FontFamily="Arial Black">
+                            <TextBlock FontFamily="Arial Black" FontSize="10">
                                 <Run Text="{Binding ShoesName}" FontSize="24"></Run>
                             </TextBlock>
                             <!--<TextBlock FontFamily="Source Code Pro Black" FontSize="18">-->
-                                <TextBlock FontFamily="Cascadia Mono SemiBold" FontSize="18">
+                            <TextBlock FontFamily="Source Code Pro Black" FontSize="18">
                                 <Run Text="{Binding ShoesType.NameType}"></Run>
                             </TextBlock>
                             <TextBlock FontFamily="Source Code Pro Black">
@@ -45,24 +45,27 @@
                                 <Run Text="{Binding Price}"></Run>
                                 <Run Text="руб."></Run>
                             </TextBlock>
-                            <Button x:Name="AddToCart" Content="В корзину" Width="142" Height="36" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Stretch" BorderBrush="Black" Background="#FF72B9E6" Foreground="#FF152340" FontFamily="Source Code Pro Semibold" FontSize="14" Click="AddToCart_Click"/>
+                            <Button x:Name="AddToCart" Content="В корзину" Width="142" Height="36" Margin="0,7,0,0" HorizontalAlignment="Center" VerticalAlignment="Stretch" BorderBrush="Black" Background="#FF0027FF" Foreground="White" FontFamily="Source Code Pro Semibold" FontSize="14" Click="AddToCart_Click"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-        <TextBox x:Name="SearchTb" HorizontalAlignment="Left" Margin="51,58,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="23" TextChanged="SearchTb_TextChanged"/>
-        <Image HorizontalAlignment="Left" Height="36" Margin="10,45,0,0" VerticalAlignment="Top" Width="39" Source="/Images/149309.png"/>
-        <ComboBox x:Name="ComboFilter" HorizontalAlignment="Left" Margin="218,58,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" SelectionChanged="ComboFilter_SelectionChanged"/>
-        <ComboBox x:Name="ComboSort" HorizontalAlignment="Left" Margin="356,59,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboSort_SelectionChanged"/>
-        <Label Content="Фильтрация" HorizontalAlignment="Left" Margin="218,34,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
-        <Label Content="Сортировка" HorizontalAlignment="Left" Margin="356,34,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
-        <Button x:Name="ToCartButton" HorizontalAlignment="Left" Margin="706,9,0,0" VerticalAlignment="Top" Height="60" Width="84" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Click="ToCartButton_Click">
+        <TextBox x:Name="SearchTb" HorizontalAlignment="Left" Margin="35,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="140" Height="23" TextChanged="SearchTb_TextChanged"/>
+        <Image HorizontalAlignment="Left" Height="23" Margin="7,101,0,0" VerticalAlignment="Top" Width="25" Source="/Images/149309.png"/>
+        <ComboBox x:Name="ComboFilter" HorizontalAlignment="Left" Margin="202,100,0,0" VerticalAlignment="Top" Width="120" BorderBrush="White" SelectionChanged="ComboFilter_SelectionChanged"/>
+        <ComboBox x:Name="ComboSort" HorizontalAlignment="Center" Margin="0,101,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboSort_SelectionChanged"/>
+        <Label Content="Фильтрация" HorizontalAlignment="Left" Margin="202,71,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
+        <Label Content="Сортировка" HorizontalAlignment="Left" Margin="340,71,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
+        <Button x:Name="ToCartButton" HorizontalAlignment="Left" Margin="716,0,0,0" VerticalAlignment="Top" Height="57" Width="84" Background="{x:Null}" BorderBrush="Black" Foreground="{x:Null}" Click="ToCartButton_Click">
             <Image HorizontalAlignment="Left" Height="54" VerticalAlignment="Center" Width="56" Source="/Images/cart.png" Panel.ZIndex="2"/>
         </Button>
-        <Button x:Name="ExitButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="44" Background="#FFE61E1E" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Margin="6,9,0,0" Click="ExitButton_Click">
-            <Image HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="26" Source="/Images/kindpng_2158013 (1).png"/>
-        </Button>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,393">
+            <Button x:Name="ExitButton" HorizontalAlignment="Left" VerticalAlignment="Center" Height="58" Width="56" Background="{x:Null}" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Click="ExitButton_Click" BorderBrush="Black" Margin="-1,0,0,0">
+                <Image HorizontalAlignment="Left" Height="49" VerticalAlignment="Center" Width="57" Source="/Images/krest.png"/>
+            </Button>
+        </Border>
+        <Label Content="Товары" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="36"/>
 
     </Grid>
 </Page>

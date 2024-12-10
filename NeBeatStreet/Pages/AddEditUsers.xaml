@@ -8,15 +8,15 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="AddEditUsers">
     <Grid Background="White">
-        <Label Content="Добавить/Изменить пользователя" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="26">
+        <Label Content="Добавить/Изменить пользователя" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="26" Height="58" BorderBrush="Black">
             <Label.Foreground>
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <TextBox x:Name="FirstNameTb" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="32,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" />
-        <TextBox x:Name="EmailTb" Text="{Binding Email}" HorizontalAlignment="Left" Margin="32,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34"/>
-        <TextBox x:Name="PhoneTb" Text="{Binding Phone}" HorizontalAlignment="Left" Margin="32,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" />
-        <TextBox x:Name="LoginTb" Text="{Binding Login}" HorizontalAlignment="Left" Margin="529,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33"/>
+        <TextBox x:Name="FirstNameTb" Text="{Binding FirstName}" HorizontalAlignment="Left" Margin="32,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" BorderBrush="Black" />
+        <TextBox x:Name="EmailTb" Text="{Binding Email}" HorizontalAlignment="Left" Margin="32,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34" BorderBrush="Black"/>
+        <TextBox x:Name="PhoneTb" Text="{Binding Phone}" HorizontalAlignment="Left" Margin="32,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" BorderBrush="Black" />
+        <TextBox x:Name="LoginTb" Text="{Binding Login}" HorizontalAlignment="Left" Margin="529,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" BorderBrush="Black"/>
         <Button x:Name="AddEditButtonUser" Content="Сохранить" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="47" Width="212" Background="#FF0D1BED" Foreground="White" FontFamily="Cascadia Mono SemiBold" FontSize="16" Click="AddEditButtonUser_Click" />
         <Label Content="Введите имя" HorizontalAlignment="Left" Margin="32,91,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="18">
             <Label.Foreground>
@@ -43,8 +43,8 @@
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <Button x:Name="ExitButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="30" Width="44" Background="#FFE61E1E" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Margin="6,9,0,0" Click="ExitButton_Click">
-            <Image HorizontalAlignment="Left" Height="33" VerticalAlignment="Top" Width="26" Source="/Images/kindpng_2158013 (1).png"/>
+        <Button x:Name="ExitButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="58" Width="70" Background="{x:Null}" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Click="ExitButton_Click" BorderBrush="Black">
+            <Image HorizontalAlignment="Center" Height="52" VerticalAlignment="Center" Width="94" Source="/Images/krest.png"/>
         </Button>
         <Label Content="Выберите роль пользователя" HorizontalAlignment="Left" Margin="519,251,0,0" VerticalAlignment="Top" FontFamily="Cascadia Mono SemiBold" FontSize="16" Width="271">
             <Label.Foreground>
@@ -52,7 +52,8 @@
             </Label.Foreground>
         </Label>
         <ComboBox x:Name="ComboRole" ItemsSource="{Binding Role}" DisplayMemberPath="NameRole" HorizontalAlignment="Left" Margin="529,288,0,0" VerticalAlignment="Top" Width="184" Height="33"/>
-        <TextBox x:Name="PasswordTb" Text="{Binding Password}" HorizontalAlignment="Left" Margin="529,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34"/>
+        <TextBox x:Name="PasswordTb" Text="{Binding Password}" HorizontalAlignment="Left" Margin="529,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34" BorderBrush="Black"/>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,392"/>
 
     </Grid>
 </Page>

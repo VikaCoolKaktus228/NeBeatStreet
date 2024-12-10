@@ -8,6 +8,6 @@ namespace NeBeatStreet.AppData
 {
     internal class AppConnect
     {
-        public static Entities2 shoesmodel;
+        public static Entities4 shoesmodel;
     }
 }

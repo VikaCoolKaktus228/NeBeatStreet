@@ -9,24 +9,23 @@
 
 namespace NeBeatStreet.AppData
 {
-    
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities2 : DbContext
+    public partial class Entities4 : DbContext
     {
-        private static Entities2 _context;
-        public Entities2()
-            : base("name=Entities2")
+        private static Entities4 _context;
+        public Entities4()
+            : base("name=Entities4")
         {
         }
-        public static Entities2 GetContext()
+        public static Entities4 GetContext()
         {
-            if (_context == null)
-                _context = new Entities2();
+            if( _context == null )
+                _context = new Entities4();
             return _context;
         }
     

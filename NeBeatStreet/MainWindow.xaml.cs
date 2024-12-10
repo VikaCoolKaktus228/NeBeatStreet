@@ -25,7 +25,7 @@ namespace NeBeatStreet
         public MainWindow()
         {
             InitializeComponent();
-            AppConnect.shoesmodel = new Entities2();
+            AppConnect.shoesmodel = new Entities4();
             AppFrame.MainFraim = mainframe;
             mainframe.Navigate(new Authorization());
         }

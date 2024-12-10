@@ -44,6 +44,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
@@ -252,6 +253,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Images\free-icon-arrow-4629412.png" />
+    <Resource Include="Images\Untitled252_20241210063850.png" />
+    <Resource Include="Images\щкв.png" />
+  </ItemGroup>
+  <ItemGroup>
     <Content Include="AppData\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -262,9 +268,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
-    <Resource Include="Images\free-icon-arrow-4629412.png" />
-    <Resource Include="Images\Untitled252_20241210063850.png" />
-    <Resource Include="Images\щкв.png" />
+    <Resource Include="Images\krest.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -9,7 +9,7 @@
       Title="AdminList">
 
     <Grid Background="White">
-        <ListView x:Name="ShoesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,105,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden">
+        <ListView x:Name="ShoesList" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,105,0,0" ScrollViewer.HorizontalScrollBarVisibility="Hidden" BorderBrush="Black">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid>
@@ -44,8 +44,8 @@
                                 <Run Text="{Binding Price}"></Run>
                                 <Run Text="руб."></Run>
                             </TextBlock>
-                            <Button x:Name="ChangeButton" Content="Изменить" Width="142" Height="36" Margin="0,0,0,0" HorizontalAlignment="Center" VerticalAlignment="Stretch" BorderBrush="Black" Background="#FF72B9E6" Foreground="#FF152340" FontFamily="Source Code Pro Semibold" FontSize="14" Click="ChangeButton_Click"/>
-                            <Button x:Name="DeleteButton" Content="Удалить" Width="142" Height="36" BorderBrush="Black" Background="#FF3BB3FF" Foreground="#FF152340" FontFamily="Source Code Pro Semibold" FontSize="14" Margin="0,5,0,0" Click="DeleteButton_Click"/>
+                            <Button x:Name="ChangeButton" Content="Изменить" Width="142" Height="36" Margin="0,6,0,0" HorizontalAlignment="Center" VerticalAlignment="Stretch" BorderBrush="Black" Background="{x:Null}" Foreground="Black" FontFamily="Source Code Pro Semibold" FontSize="14" Click="ChangeButton_Click"/>
+                            <Button x:Name="DeleteButton" Content="Удалить" Width="142" Height="36" BorderBrush="Black" Background="{x:Null}" Foreground="Black" FontFamily="Source Code Pro Semibold" FontSize="14" Margin="0,5,0,0" Click="DeleteButton_Click"/>
                         </StackPanel>
                     </Grid>
                 </DataTemplate>
@@ -57,11 +57,14 @@
         <ComboBox x:Name="ComboSort" HorizontalAlignment="Left" Margin="349,80,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="ComboSort_SelectionChanged"/>
         <Label Content="Фильтрация" HorizontalAlignment="Left" Margin="211,55,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
         <Label Content="Сортировка" HorizontalAlignment="Left" Margin="349,55,0,0" VerticalAlignment="Top" FontFamily="Cascadia Code SemiBold"/>
-        <Button x:Name="AddShoesButton" Content="Добавить обувь" HorizontalAlignment="Left" Margin="669,60,0,0" VerticalAlignment="Top" Background="#FF2A3FEC" Foreground="#FFF0F1FF" FontFamily="Source Code Pro Medium" FontWeight="Normal" Height="31" Width="121" Click="AddShoesButton_Click"/>
-        <Button x:Name="ToUsersButton" Content="Пользователи" HorizontalAlignment="Left" Margin="694,10,0,0" VerticalAlignment="Top" Background="#FF2A7DEC" Foreground="#FFF0F1FF" FontFamily="Source Code Pro Medium" FontWeight="Normal" Height="30" Width="96" Click="ToUsersButton_Click"/>
-        <Button x:Name="ExitButton" HorizontalAlignment="Left" Margin="3,2,0,0" VerticalAlignment="Top" Height="46" Width="49" Background="#FFE61E1E" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Click="ExitButton_Click">
+        <Button x:Name="AddShoesButton" Content="Добавить обувь" HorizontalAlignment="Left" Margin="494,55,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="Black" FontFamily="Source Code Pro Medium" FontWeight="Normal" Height="50" Width="175" Click="AddShoesButton_Click" BorderBrush="Black"/>
+        <Button x:Name="ToUsersButton" Content="Пользователи" HorizontalAlignment="Left" Margin="669,55,0,0" VerticalAlignment="Top" Background="{x:Null}" Foreground="Black" FontFamily="Source Code Pro Medium" FontWeight="Normal" Height="50" Width="131" Click="ToUsersButton_Click" BorderBrush="Black"/>
+        <Button x:Name="ExitButton" HorizontalAlignment="Left" VerticalAlignment="Top" Height="55" Width="53" Background="Black" RenderTransformOrigin="0,0" BorderThickness="1,1,1,1" Click="ExitButton_Click" BorderBrush="Black">
             <Image HorizontalAlignment="Left" Height="35" VerticalAlignment="Top" Width="39" Source="/Images/kindpng_2158013 (1).png"/>
         </Button>
+        <Border BorderBrush="Black" BorderThickness="1" Margin="0,55,306,345"/>
+        <Label Content="Панель Администратора" HorizontalAlignment="Left" Margin="215,0,0,0" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="27" Height="50"/>
+        <Border BorderBrush="Black" BorderThickness="1,1,1,1.5" Margin="0,0,0,395"/>
 
     </Grid>
 </Page>

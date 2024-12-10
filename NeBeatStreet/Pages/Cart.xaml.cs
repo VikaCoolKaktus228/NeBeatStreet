@@ -26,16 +26,16 @@ namespace NeBeatStreet.Pages
         public Cart()
         {
             InitializeComponent();
-            var orderobj = Entities2.GetContext().Order
+            var orderobj = Entities4.GetContext().Order
                                .Where(x => x.IdUsers == idusercart)
                                .Select(x => x.IdOrder)
                                .ToList();
 
-            var cartobj = Entities2.GetContext().CartTable
+            var cartobj = Entities4.GetContext().CartTable
                                .Where(c => orderobj.Contains(c.OrderId))
                                .Select(x => x.ShoeId)
                                .ToList();
-            var shoesincart = Entities2.GetContext().Shoes
+            var shoesincart = Entities4.GetContext().Shoes
                                          .Where(x => cartobj.Contains(x.IdShoes))
                                          .ToList();
             CartList.ItemsSource = shoesincart;
@@ -49,11 +49,11 @@ namespace NeBeatStreet.Pages
         private void removecart()
         {
             int userId = Convert.ToInt32(App.Current.Properties["Id"]);
-            var order = Entities2.GetContext().Order.FirstOrDefault(o => o.IdUsers == userId && o.IdStatus == 2);
+            var order = Entities4.GetContext().Order.FirstOrDefault(o => o.IdUsers == userId && o.IdStatus == 2);
 
-            var cartItems = Entities2.GetContext().CartTable.Where(c => c.OrderId == order.IdOrder).ToList();
-            Entities2.GetContext().CartTable.RemoveRange(cartItems);
-            Entities2.GetContext().SaveChanges();
+            var cartItems = Entities4.GetContext().CartTable.Where(c => c.OrderId == order.IdOrder).ToList();
+            Entities4.GetContext().CartTable.RemoveRange(cartItems);
+            Entities4.GetContext().SaveChanges();
             CartList.ItemsSource = new List<Cart>();
 
         }
@@ -61,26 +61,26 @@ namespace NeBeatStreet.Pages
         {
             try
             {
-                var orderobj = Entities2.GetContext().Order
+                var orderobj = Entities4.GetContext().Order
                 .Where(x => x.IdUsers == idusercart)
                 .Select(x => x.IdOrder)
                 .ToList();
 
-                var cartobj = Entities2.GetContext().CartTable
+                var cartobj = Entities4.GetContext().CartTable
                                    .Where(c => orderobj.Contains(c.OrderId))
                                    .ToList();
 
                 foreach (var item in cartobj)
                 {
                     int idUsers = Convert.ToInt32(App.Current.Properties["Id"].ToString());
-                    var order = Entities2.GetContext().Order.FirstOrDefault(o => o.IdUsers == idUsers);
+                    var order = Entities4.GetContext().Order.FirstOrDefault(o => o.IdUsers == idUsers);
                     var cartnew = new OrderManager()
                     {
                         IdOrder = order.IdOrder,
                         ShoesId = item.ShoeId
                     };
-                    Entities2.GetContext().OrderManager.Add(cartnew);
-                    Entities2.GetContext().SaveChanges();
+                    Entities4.GetContext().OrderManager.Add(cartnew);
+                    Entities4.GetContext().SaveChanges();
                 }
             }
             catch (Exception ex)
@@ -93,7 +93,7 @@ namespace NeBeatStreet.Pages
 
         private void RemoveFromCart_Click(object sender, RoutedEventArgs e)
         {
-            CartList.ItemsSource = Entities2.GetContext().CartTable.ToList();
+            CartList.ItemsSource = Entities4.GetContext().CartTable.ToList();
             Button b = sender as Button;
             int ID = int.Parse(((b.Parent as StackPanel).Children[0] as TextBlock).Text);
             AppConnect.shoesmodel.CartTable.Remove(AppConnect.shoesmodel.CartTable.Where(x => x.ShoeId == ID).First());
@@ -118,6 +118,11 @@ namespace NeBeatStreet.Pages
                     MessageBox.Show(ex.Message.ToString());
                 }
             }
+        }
+
+        private void GoBackButton_Click(object sender, RoutedEventArgs e)
+        {
+            AppFrame.MainFraim.Navigate(new UserList(((sender as Button).DataContext as User)));
         }
     }
 }
