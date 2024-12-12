@@ -21,8 +21,7 @@ namespace NeBeatStreet.Pages
     /// </summary>
     public partial class UserList : Page
     {
-        private User curuser = new User();
-        public UserList(User user)
+        public UserList()
         {
             InitializeComponent();
             List<Shoes> listshoes = AppConnect.shoesmodel.Shoes.ToList();
@@ -35,7 +34,6 @@ namespace NeBeatStreet.Pages
             ComboFilter.Items.Add("цена от 1000 до 5000");
             ComboFilter.Items.Add("цена от 5000");
             ComboFilter.SelectedIndex = 0;
-            DataContext = curuser;
         }
 
         Shoes[] FindShoes()

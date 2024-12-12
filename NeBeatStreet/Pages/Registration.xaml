@@ -8,7 +8,7 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Registration">
 
-    <Grid Background="White">
+    <Grid Background="White" Height="450" Width="800">
         <Label Content="Регистрация" HorizontalAlignment="Center" VerticalAlignment="Top" FontFamily="Arial Black" FontSize="36" Panel.ZIndex="1" Background="{x:Null}" BorderBrush="Black" OpacityMask="Black">
             <Label.Foreground>
                 <SolidColorBrush Color="Black" Opacity="1"/>

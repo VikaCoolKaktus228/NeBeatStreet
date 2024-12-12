@@ -28,9 +28,12 @@ namespace NeBeatStreet.Pages
             ShoesList.ItemsSource = listshoes;
             ComboSort.Items.Add("По уменьшению цены");
             ComboSort.Items.Add("По возрастанию цены");
+            ComboFilter.Items.Add("Все");
             ComboFilter.Items.Add("цена от 0 до 1000");
             ComboFilter.Items.Add("цена от 1000 до 5000");
             ComboFilter.Items.Add("цена от 5000");
+            
+
         }
         Shoes[] FindShoes()
         {

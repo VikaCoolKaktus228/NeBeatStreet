@@ -24,6 +24,11 @@ namespace NeBeatStreet.Pages
         public Registration()
         {
             InitializeComponent();
+            EmailTb.MaxLength = 100;
+            PhoneTb.MaxLength = 15;
+            LoginTb.MaxLength = 50;
+            PasswordTb.MaxLength = 20;
+            RepeatPasswordTb.MaxLength = 20;
         }
 
         private void RegistrateButton_Copy1_Click(object sender, RoutedEventArgs e)
@@ -66,6 +71,11 @@ namespace NeBeatStreet.Pages
                        "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
                 return;
             }
+            if (AppConnect.shoesmodel.User.Count(x => x.Login == LoginTb.Text) > 0)
+            {
+                MessageBox.Show("user already exist");
+            }
+            //Reg(FirstNameTb.Text, EmailTb.Text, PhoneTb.Text, LoginTb.Text, PasswordTb.Password, 1);
 
             try
             {
@@ -84,10 +94,37 @@ namespace NeBeatStreet.Pages
                 MessageBox.Show("Вы успешно зарегистрировались!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
                 AppFrame.MainFraim.Navigate(new Authorization());
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        public bool Reg(string firstname, string email, string phone, string login, string password, int role)
+        {
+            try
+            {
+                User reguser = new User()
+                {
+                    FirstName = firstname,
+                    Email = email,
+                    Phone = phone,
+                    Login = login,
+                    Password = password,
+                    UserRole = role
+
+                };
+                AppConnect.shoesmodel.User.Add(reguser);
+                AppConnect.shoesmodel.SaveChanges();
+                MessageBox.Show("Вы успешно зарегистрировались!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
+                AppFrame.MainFraim.Navigate(new Authorization());
+            }
             catch(Exception ex)
             {
                 MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+                return true;
+            
         }
 
         private void FirstNameTb_KeyDown(object sender, KeyEventArgs e)
@@ -100,7 +137,9 @@ namespace NeBeatStreet.Pages
 
         private void PhoneTb_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.Key >= Key.A && e.Key <= Key.Z && e.Key != Key.Add)
+            if (!(char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) ||
+             e.Key == Key.Back ||
+             (e.Key == Key.Add && Keyboard.IsKeyDown(Key.LeftShift))))
             {
                 e.Handled = true;
             }

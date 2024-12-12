@@ -32,6 +32,21 @@ namespace NeBeatStreet.AppData
         public string Article { get; set; }
         public int Firm { get; set; }
         public string Photo { get; set; }
+
+        public string CurrentPhoto
+        {
+            get
+            {
+                if(string.IsNullOrEmpty(Photo) || string.IsNullOrWhiteSpace(Photo))
+                {
+                    return "/Images/picture.png";
+                }
+                else
+                {
+                    return "/Images/" + Photo;
+                }
+            }
+        }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CartTable> CartTable { get; set; }

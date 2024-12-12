@@ -34,9 +34,9 @@ namespace NeBeatStreet.Pages
         private void EnterButton_Click(object sender, RoutedEventArgs e)
         {
             var userobj = AppConnect.shoesmodel.User.FirstOrDefault(x => x.Login == LoginTb.Text && x.Password == PasswordTb.Password);
-            if(userobj != null)
+            if (userobj != null)
             {
-                if(userobj.Password != PasswordTb.Password)
+                if (userobj.Password != PasswordTb.Password)
                 {
                     MessageBox.Show("Неверный пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -47,7 +47,7 @@ namespace NeBeatStreet.Pages
                         case 1:
                             App.Current.Properties["Id"] = userobj.IdUser;
                             MessageBox.Show("Здравствуйте, пользователь " + userobj.FirstName, "Вход", MessageBoxButton.OK, MessageBoxImage.Information);
-                            AppFrame.MainFraim.Navigate(new UserList((sender as Button).DataContext as User));
+                            AppFrame.MainFraim.Navigate(new UserList());
                             break;
                         case 2:
                             MessageBox.Show("Здравствуйте, администратор " + userobj.FirstName, "Вход", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -59,7 +59,7 @@ namespace NeBeatStreet.Pages
                             break;
                     }
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
                 }
@@ -68,6 +68,60 @@ namespace NeBeatStreet.Pages
             {
                 MessageBox.Show("Такого пользователя не существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+
+            //Auth(LoginTb.Text, PasswordTb.Password);
         }
     }
+    //    public bool Auth(string login, string password)
+    //    {
+    //        try
+    //        {
+    //            var userobj = AppConnect.shoesmodel.User.FirstOrDefault(x => x.Login == login && x.Password == password);
+    //            if (userobj != null)
+    //            {
+    //                if (userobj.Password != password)
+    //                {
+    //                    MessageBox.Show("Неверный пароль!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+    //                    return true;
+    //                }
+    //                try
+    //                {
+    //                    switch (userobj.UserRole)
+    //                    {
+    //                        case 1:
+    //                            App.Current.Properties["Id"] = userobj.IdUser;
+    //                            MessageBox.Show("Здравствуйте, пользователь " + userobj.FirstName, "Вход", MessageBoxButton.OK, MessageBoxImage.Information);
+    //                            AppFrame.MainFraim.Navigate(new UserList());
+    //                            break;
+    //                        case 2:
+    //                            MessageBox.Show("Здравствуйте, администратор " + userobj.FirstName, "Вход", MessageBoxButton.OK, MessageBoxImage.Information);
+    //                            AppFrame.MainFraim.Navigate(new AdminList());
+    //                            break;
+    //                        case 3:
+    //                            MessageBox.Show("Здравствуйте, менеджер " + userobj.FirstName, "Вход", MessageBoxButton.OK, MessageBoxImage.Information);
+    //                            AppFrame.MainFraim.Navigate(new ManagerList());
+    //                            break;
+    //                    }
+    //                }
+    //                catch (Exception ex)
+    //                {
+    //                    MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+    //                }
+    //            }
+    //            else
+    //            {
+    //                MessageBox.Show("Такого пользователя не существует!", "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+    //                return true;
+    //            }
+    //            return true;
+    //        }
+    //        catch(Exception ex)
+    //        {
+    //            MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+                
+    //        }
+    //        return true;
+    //    }
+    //}
+        
 }

@@ -32,6 +32,12 @@ namespace NeBeatStreet.Pages
             ComboRole.Items.Clear();
             ComboRole.ItemsSource = AppConnect.shoesmodel.Role.ToList();
             DataContext = thisuser;
+            FirstNameTb.MaxLength = 49;
+            PhoneTb.MaxLength = 15;
+            EmailTb.MaxLength = 50;
+            LoginTb.MaxLength = 50;
+            PasswordTb.MaxLength = 50;
+
         }
         private void AddUser()
         {

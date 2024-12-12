@@ -89,14 +89,14 @@ namespace NeBeatStreet.Pages
             }
         }
 
-
-
         private void RemoveFromCart_Click(object sender, RoutedEventArgs e)
         {
-            CartList.ItemsSource = Entities4.GetContext().CartTable.ToList();
+
+            CartList.ItemsSource = Entities4.GetContext().CartTable.ToList(); 
             Button b = sender as Button;
-            int ID = int.Parse(((b.Parent as StackPanel).Children[0] as TextBlock).Text);
-            AppConnect.shoesmodel.CartTable.Remove(AppConnect.shoesmodel.CartTable.Where(x => x.ShoeId == ID).First());
+            int ID = int.Parse(((b.Parent as StackPanel).Children[0] as TextBlock).Text); 
+            Console.WriteLine(ID);
+            AppConnect.shoesmodel.CartTable.Remove(AppConnect.shoesmodel.CartTable.Where(x => x.IdCart == ID).First());
             AppConnect.shoesmodel.SaveChanges();
             AppFrame.MainFraim.GoBack();
             AppFrame.MainFraim.Navigate(new Cart());
@@ -111,7 +111,7 @@ namespace NeBeatStreet.Pages
                     addmanagerorder();
                     removecart();
                     MessageBox.Show("Заказ успешно сформирован!", "Успех", MessageBoxButton.OK, MessageBoxImage.Information);
-                    AppFrame.MainFraim.Navigate(new UserList((sender as Button).DataContext as User));
+                    AppFrame.MainFraim.Navigate(new UserList());
                 }
                 catch (Exception ex)
                 {
@@ -122,7 +122,7 @@ namespace NeBeatStreet.Pages
 
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
-            AppFrame.MainFraim.Navigate(new UserList(((sender as Button).DataContext as User)));
+            AppFrame.MainFraim.Navigate(new UserList());
         }
     }
 }

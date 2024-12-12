@@ -29,5 +29,15 @@ namespace NeBeatStreet
             AppFrame.MainFraim = mainframe;
             mainframe.Navigate(new Authorization());
         }
+
+        private void N_Closed(object sender, EventArgs e)
+        {
+            if (Entities4.GetContext().CartTable.Any())
+            {
+                var allCartRecords = Entities4.GetContext().CartTable.ToList();
+                Entities4.GetContext().CartTable.RemoveRange(allCartRecords);
+                Entities4.GetContext().SaveChanges();
+            }
+        }
     }
 }
