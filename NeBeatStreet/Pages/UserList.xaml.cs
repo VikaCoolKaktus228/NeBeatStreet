@@ -29,6 +29,8 @@ namespace NeBeatStreet.Pages
            
             ComboSort.Items.Add("По уменьшению цены");
             ComboSort.Items.Add("По возрастанию цены");
+            ComboSort.Items.Add("От А до Я");
+            ComboSort.Items.Add("От Я до А");
             ComboFilter.Items.Add("Все");
             ComboFilter.Items.Add("цена от 0 до 1000");
             ComboFilter.Items.Add("цена от 1000 до 5000");
@@ -49,7 +51,8 @@ namespace NeBeatStreet.Pages
             {
                 switch (ComboFilter.SelectedIndex)
                 {
-
+                    case 0:
+                        break;
                     case 1:
                         oneshoes = oneshoes.Where(x => x.Price >= 0 && x.Price < 1000).ToList();
                         break;
@@ -71,6 +74,13 @@ namespace NeBeatStreet.Pages
                     case 1:
                         oneshoes = oneshoes.OrderBy(x => x.Price).ToList();
                         break;
+                    case 2:
+                        oneshoes = oneshoes.OrderBy(x => x.ShoesName).ToList();
+                        break;
+                    case 3:
+                        oneshoes = oneshoes.OrderByDescending(x => x.ShoesName).ToList<Shoes>();
+                        break;
+
                 }
             }
             ShoesList.ItemsSource = oneshoes;
@@ -96,7 +106,7 @@ namespace NeBeatStreet.Pages
                     int selectedGoodsId = ((Shoes)ShoesList.SelectedItem).IdShoes;
 
 
-                    var order = Entities4.GetContext().Order.FirstOrDefault(o => o.IdUsers == idUsers);
+                    var order = Entities5.GetContext().Order.FirstOrDefault(o => o.IdUsers == idUsers);
                     if (order == null)
                     {
                         order = new Order()
@@ -104,18 +114,19 @@ namespace NeBeatStreet.Pages
                             IdUsers = idUsers,
                             IdStatus = 2
                         };
-                        Entities4.GetContext().Order.Add(order);
-                        Entities4.GetContext().SaveChanges();
+                        Entities5.GetContext().Order.Add(order);
+                        Entities5.GetContext().SaveChanges();
                     }
 
                     CartTable cartnew = new CartTable()
                     {
                         OrderId = order.IdOrder,
-                        ShoeId = selectedGoodsId
+                        ShoeId = selectedGoodsId,
+                        Quantity =+ 1
                     };
 
-                    Entities4.GetContext().CartTable.Add(cartnew);
-                    Entities4.GetContext().SaveChanges();
+                    Entities5.GetContext().CartTable.Add(cartnew);
+                    Entities5.GetContext().SaveChanges();
 
                     MessageBox.Show("Товар успешно добавлен в корзину!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
 

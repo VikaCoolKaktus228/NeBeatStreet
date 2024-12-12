@@ -51,7 +51,12 @@
                 <SolidColorBrush Color="Black" Opacity="1"/>
             </Label.Foreground>
         </Label>
-        <ComboBox x:Name="ComboRole" ItemsSource="{Binding Role}" DisplayMemberPath="NameRole" HorizontalAlignment="Left" Margin="529,288,0,0" VerticalAlignment="Top" Width="184" Height="33"/>
+        <ComboBox x:Name="ComboRole"
+                                                                    ItemsSource="{Binding Role}" 
+DisplayMemberPath="NameRole"
+SelectedValuePath="IdRole"
+SelectedValue="{Binding UserRole}"
+                  HorizontalAlignment="Left" Margin="529,288,0,0" VerticalAlignment="Top" Width="184" Height="33"/>
         <TextBox x:Name="PasswordTb" Text="{Binding Password}" HorizontalAlignment="Left" Margin="529,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34" BorderBrush="Black"/>
         <Border BorderBrush="Black" BorderThickness="1" Margin="0,0,0,392"/>
 

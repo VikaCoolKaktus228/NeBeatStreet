@@ -28,14 +28,14 @@ namespace NeBeatStreet.Pages
             var curentorderid = selectedorder.IdOrder;
             var curentorderuser = selectedorder.IdUsers;
             var curentorderstatus = selectedorder.IdStatus;
-            var statusOrder = Entities4.GetContext().Status.FirstOrDefault(s => s.Order.Any(o => o.IdOrder == curentorderid));
+            var statusOrder = Entities5.GetContext().Status.FirstOrDefault(s => s.Order.Any(o => o.IdOrder == curentorderid));
             InitializeComponent();
 
-            var moreorder = Entities4.GetContext().OrderManager
+            var moreorder = Entities5.GetContext().OrderManager
                                .Where(m => m.IdOrder == curentorderid)
                                .Select(m => m.ShoesId)
                                .ToList();
-            var goodsInorder = Entities4.GetContext().Shoes
+            var goodsInorder = Entities5.GetContext().Shoes
                                          .Where(x => moreorder.Contains(x.IdShoes))
                                          .ToList();
             AboutOrderList.ItemsSource = goodsInorder;
@@ -45,16 +45,16 @@ namespace NeBeatStreet.Pages
                 currentorder = selectedorder;
             }
 
-            var userlogin = Entities4.GetContext().User
+            var userlogin = Entities5.GetContext().User
                                .FirstOrDefault(s => s.IdUser == curentorderuser);
             labeluser.Content = userlogin.Login;
 
             labelId.Content = selectedorder.IdOrder;
 
-            var statusorder = Entities4.GetContext().Status
+            var statusorder = Entities5.GetContext().Status
                                .FirstOrDefault(s => s.StatusId == curentorderstatus);
 
-            orderstatuscombo.ItemsSource = Entities4.GetContext().Status.ToList();
+            orderstatuscombo.ItemsSource = Entities5.GetContext().Status.ToList();
 
             DataContext = currentorder;
         }

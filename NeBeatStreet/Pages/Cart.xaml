@@ -19,31 +19,36 @@
                             <ColumnDefinition Width="192"></ColumnDefinition>
                         </Grid.ColumnDefinitions>
                         <StackPanel Grid.Column="0">
-                            <Image Source="{Binding Shoes.CurrentPhoto}" Height="143"></Image>
+                            <Image Source="{Binding CurrentPhoto}" Height="143"></Image>
                         </StackPanel>
                         <StackPanel Grid.Column="1">
                             <TextBlock FontFamily="Arial Black">
-                                <Run Text="{Binding Shoes.ShoesName}" FontSize="24"></Run>
+                                <Run Text="{Binding ShoesName}" FontSize="24"></Run>
                             </TextBlock>
-                            <TextBlock FontFamily="Source Code Pro Black" FontSize="18">
+                            <!--<TextBlock FontFamily="Source Code Pro Black" FontSize="18">
                                 <Run Text="{Binding ShoesType.NameType}"></Run>
-                            </TextBlock>
+                            </TextBlock>-->
                             <TextBlock FontFamily="Source Code Pro Black">
                                 <Run Text="Артикул: "></Run>
-                                <Run Text="{Binding Shoes.Article}"></Run>
+                                <Run Text="{Binding Article}"></Run>
                             </TextBlock>
 
-                            <TextBlock>
+                            <!--<TextBlock>
                                 <Run Text="{Binding ShoesFirm.NameFirm}" FontFamily="Impact" FontSize="16"></Run>
-                            </TextBlock>
+                            </TextBlock>-->
                         </StackPanel>
                         <StackPanel Grid.Column="2">
-                            <TextBlock Margin="0,0,30,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="20">
-                                <Run Text="{Binding Shoes.Price}"></Run>
-                                <Run Text="руб."></Run>
-                            </TextBlock>
-                            <TextBlock Text="{Binding IdCart}" Visibility="Collapsed" Height="100" Width="96"/>
+                            <TextBlock Text="{Binding IdShoes}" Visibility="Collapsed" Height="100" Width="96"/>
                             <Button x:Name="RemoveFromCart" Content="убрать" Height="29" Width="152" Background="#FF0A07FF" Foreground="White" Margin="0,10,0,0" Click="RemoveFromCart_Click"/>
+
+                            <TextBlock Margin="0,0,30,0" HorizontalAlignment="Center" FontFamily="OCR A Extended" FontSize="20">
+                                <Run Text="{Binding Price}"></Run>
+                                <Run Text="руб."></Run>
+                                
+                            </TextBlock>
+                            <!--<TextBlock HorizontalAlignment="Center" FontFamily="OCR A Extended">
+                            <Run Text="{Binding Quantity}"></Run>
+                            </TextBlock>-->
 
                         </StackPanel>
                     </Grid>

@@ -16,7 +16,7 @@
         </Label>
         <TextBox x:Name="FirstNameTb" HorizontalAlignment="Left" Margin="32,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" KeyDown="FirstNameTb_KeyDown" BorderBrush="Black"/>
         <TextBox x:Name="EmailTb" HorizontalAlignment="Left" Margin="32,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="184" FontSize="16" Height="34" BorderBrush="Black"/>
-        <TextBox x:Name="PhoneTb" HorizontalAlignment="Left" Margin="32,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="16" Height="33" KeyDown="PhoneTb_KeyDown" BorderBrush="Black"/>
+        <TextBox x:Name="PhoneTb" HorizontalAlignment="Left" Margin="32,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" FontSize="16" Height="33" KeyDown="PhoneTb_KeyDown" BorderBrush="Black" TextChanged="PhoneTb_TextChanged"/>
         <TextBox x:Name="LoginTb" HorizontalAlignment="Left" Margin="529,124,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" FontSize="16" Height="33" BorderBrush="Black"/>
         <PasswordBox x:Name="PasswordTb" HorizontalAlignment="Left" Margin="529,0,0,0" VerticalAlignment="Center" Width="216" Height="34" PasswordChanged="PasswordTb_PasswordChanged" BorderBrush="Black"/>
         <Button x:Name="RegistrateButton" Content="Зарегистрироваться" HorizontalAlignment="Center" Margin="0,379,0,0" VerticalAlignment="Top" Height="47" Width="212" Background="#FF0309E9" Foreground="White" FontFamily="Cascadia Code SemiLight" FontSize="18" Click="RegistrateButton_Click"/>

@@ -137,12 +137,11 @@ namespace NeBeatStreet.Pages
 
         private void PhoneTb_KeyDown(object sender, KeyEventArgs e)
         {
-            if (!(char.IsDigit((char)KeyInterop.VirtualKeyFromKey(e.Key)) ||
-             e.Key == Key.Back ||
-             (e.Key == Key.Add && Keyboard.IsKeyDown(Key.LeftShift))))
+            if ((e.Key < Key.D0 || e.Key > Key.D9) && e.Key != Key.Back)
             {
                 e.Handled = true;
             }
+            
         }
 
         private void RepeatPasswordTb_PasswordChanged(object sender, RoutedEventArgs e)
@@ -166,6 +165,20 @@ namespace NeBeatStreet.Pages
             else
             {
                 RegistrateButton.IsEnabled = true;
+            }
+        }
+
+        private void PhoneTb_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (!PhoneTb.Text.StartsWith("+"))
+            {
+                PhoneTb.TextChanged -= PhoneTb_TextChanged;
+                var currentText = PhoneTb.Text;
+                PhoneTb.Text = "+" + currentText.TrimStart('+');
+
+                PhoneTb.TextChanged += PhoneTb_TextChanged;
+
+                PhoneTb.SelectionStart = PhoneTb.Text.Length;
             }
         }
     }

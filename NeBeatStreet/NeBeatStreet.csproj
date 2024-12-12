@@ -76,64 +76,64 @@
     <Compile Include="AppData\AppConnect.cs" />
     <Compile Include="AppData\AppFrame.cs" />
     <Compile Include="AppData\CartTable.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Model1.Context.cs">
+    <Compile Include="AppData\Model12.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.Context.tt</DependentUpon>
+      <DependentUpon>Model12.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Model1.cs">
+    <Compile Include="AppData\Model12.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
-    <Compile Include="AppData\Model1.Designer.cs">
+    <Compile Include="AppData\Model12.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>Model1.edmx</DependentUpon>
+      <DependentUpon>Model12.edmx</DependentUpon>
     </Compile>
     <Compile Include="AppData\Order.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\OrderManager.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Role.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Shoes.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\ShoesColor.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\ShoesFirm.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\ShoesMaterial.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\ShoesType.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Size.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\sp_helpdiagrams_Result.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\Status.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\sysdiagrams.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="AppData\User.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>Model12.tt</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
@@ -228,12 +228,12 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EntityDeploy Include="AppData\Model1.edmx">
+    <EntityDeploy Include="AppData\Model12.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Model1.Designer.cs</LastGenOutput>
+      <LastGenOutput>Model12.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="AppData\Model1.edmx.diagram">
-      <DependentUpon>Model1.edmx</DependentUpon>
+    <None Include="AppData\Model12.edmx.diagram">
+      <DependentUpon>Model12.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -258,16 +258,24 @@
     <Resource Include="Images\щкв.png" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AppData\Model1.Context.tt">
+    <Content Include="AppData\Model12.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+      <DependentUpon>Model12.edmx</DependentUpon>
+      <LastGenOutput>Model12.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="AppData\Model1.tt">
+    <Content Include="AppData\Model12.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
+      <DependentUpon>Model12.edmx</DependentUpon>
+      <LastGenOutput>Model12.cs</LastGenOutput>
     </Content>
+    <Resource Include="Images\kkkkk.jpg" />
+    <Resource Include="Images\ssss.jpg" />
+    <Resource Include="Images\aaa.jpg" />
+    <Resource Include="Images\bbbb.jpg" />
+    <Resource Include="Images\ssddf.jpg" />
+    <Resource Include="Images\zxcvvv.jpg" />
+    <Resource Include="Images\ddddddddd %281%29.jpg" />
+    <Resource Include="Images\ddddddddd.jpg" />
     <Resource Include="Images\picture.png" />
     <Resource Include="Images\sneak.jpg" />
     <Resource Include="Images\tabi.jpg" />

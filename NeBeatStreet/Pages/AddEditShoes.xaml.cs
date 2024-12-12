@@ -34,13 +34,13 @@ namespace NeBeatStreet.Pages
             NameShoesTb.MaxLength = 50;
             ArticleTb.MaxLength = 10;
             ComboType.Items.Clear();
-            ComboType.ItemsSource = Entities4.GetContext().ShoesType.ToList();
+            ComboType.ItemsSource = Entities5.GetContext().ShoesType.ToList();
             ComboMaterial.Items.Clear();
-            ComboMaterial.ItemsSource = Entities4.GetContext().ShoesMaterial.ToList();
+            ComboMaterial.ItemsSource = Entities5.GetContext().ShoesMaterial.ToList();
             ComboColor.Items.Clear();
-            ComboColor.ItemsSource = Entities4.GetContext().ShoesColor.ToList();
+            ComboColor.ItemsSource = Entities5.GetContext().ShoesColor.ToList();
             ComboFirm.Items.Clear();
-            ComboFirm.ItemsSource = Entities4.GetContext().ShoesFirm.ToList();
+            ComboFirm.ItemsSource = Entities5.GetContext().ShoesFirm.ToList();
             DataContext = thisshoes;
 
         }
@@ -158,25 +158,33 @@ namespace NeBeatStreet.Pages
 
         private void AddEditButton_Click_1(object sender, RoutedEventArgs e)
         {
-            if (Convert.ToInt32(PriceTb.Text) == 0)
-            {
-                MessageBox.Show("Корректно заполните все данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
 
-            if (string.IsNullOrEmpty(NameShoesTb.Text) || string.IsNullOrEmpty(DescriptionTb.Text)
-                || string.IsNullOrEmpty(ArticleTb.Text) || ComboColor.SelectedIndex < 0 || ComboFirm.SelectedIndex < 0 || ComboMaterial.SelectedIndex < 0
-                || ComboType.SelectedIndex < 0 || string.IsNullOrEmpty(PriceTb.Text) || string.IsNullOrWhiteSpace(PriceTb.Text) /*|| Convert.ToInt32(PriceTb.Text) <= 0*/)
-            {
-                MessageBox.Show("Корректно заполните все данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
-                return;
-            }
+
             if (thisshoes.IdShoes == 0)
             {
+                decimal.TryParse(PriceTb.Text, out decimal price);
+                if (string.IsNullOrEmpty(NameShoesTb.Text) || string.IsNullOrEmpty(DescriptionTb.Text)
+    || string.IsNullOrEmpty(ArticleTb.Text) || ComboColor.SelectedIndex < 0 || ComboFirm.SelectedIndex < 0 || ComboMaterial.SelectedIndex < 0
+    || ComboType.SelectedIndex < 0 || string.IsNullOrEmpty(PriceTb.Text) || string.IsNullOrWhiteSpace(PriceTb.Text) || price == 0/*|| Convert.ToInt32(PriceTb.Text) <= 0*/)
+                {
+
+                    MessageBox.Show("Корректно заполните все данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
                 AddShoes();
             }
+
             else
             {
+                decimal.TryParse(PriceTb.Text, out decimal price);
+                if (string.IsNullOrEmpty(NameShoesTb.Text) || string.IsNullOrEmpty(DescriptionTb.Text)
+    || string.IsNullOrEmpty(ArticleTb.Text) || ComboColor.SelectedIndex < 0 || ComboFirm.SelectedIndex < 0 || ComboMaterial.SelectedIndex < 0
+    || ComboType.SelectedIndex < 0 || string.IsNullOrEmpty(PriceTb.Text) || string.IsNullOrWhiteSpace(PriceTb.Text) || price == 0/*|| Convert.ToInt32(PriceTb.Text) <= 0*/)
+                {
+                    
+                    MessageBox.Show("Корректно заполните все данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
+                    return;
+                }
                 UpdateShoes();
             }
         }

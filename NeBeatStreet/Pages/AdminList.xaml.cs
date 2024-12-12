@@ -28,11 +28,14 @@ namespace NeBeatStreet.Pages
             ShoesList.ItemsSource = listshoes;
             ComboSort.Items.Add("По уменьшению цены");
             ComboSort.Items.Add("По возрастанию цены");
+            ComboSort.Items.Add("От А до Я");
+            ComboSort.Items.Add("От Я до А");
             ComboFilter.Items.Add("Все");
             ComboFilter.Items.Add("цена от 0 до 1000");
             ComboFilter.Items.Add("цена от 1000 до 5000");
             ComboFilter.Items.Add("цена от 5000");
-            
+            ComboFilter.SelectedIndex = 0;
+
 
         }
         Shoes[] FindShoes()
@@ -50,12 +53,16 @@ namespace NeBeatStreet.Pages
                 {
 
                     case 0:
+                        break;
+                        
+                    case 1:
                         oneshoes = oneshoes.Where(x => x.Price >= 0 && x.Price < 1000).ToList();
                         break;
-                    case 1:
+                        
+                    case 2:
                         oneshoes = oneshoes.Where(x => x.Price >= 1000 && x.Price < 5000).ToList();
                         break;
-                    case 2:
+                    case 3:
                         oneshoes = oneshoes.Where(x => x.Price > 5000).ToList();
                         break;
                 }
@@ -69,6 +76,12 @@ namespace NeBeatStreet.Pages
                         break;
                     case 1:
                         oneshoes = oneshoes.OrderBy(x => x.Price).ToList();
+                        break;
+                    case 2:
+                        oneshoes = oneshoes.OrderBy(x => x.ShoesName).ToList();
+                        break;
+                    case 3:
+                        oneshoes = oneshoes.OrderByDescending(x => x.ShoesName).ToList<Shoes>();
                         break;
                 }
             }
@@ -100,11 +113,11 @@ namespace NeBeatStreet.Pages
                 {
                     try
                     {
-                        Entities4.GetContext().Shoes.RemoveRange(shoesfordeleting);
-                        Entities4.GetContext().SaveChanges();
+                        Entities5.GetContext().Shoes.RemoveRange(shoesfordeleting);
+                        Entities5.GetContext().SaveChanges();
                         MessageBox.Show("Данные удалены");
 
-                        ShoesList.ItemsSource = Entities4.GetContext().Shoes.ToList();
+                        ShoesList.ItemsSource = Entities5.GetContext().Shoes.ToList();
                         FindShoes();
                     }
                     catch (Exception ex)

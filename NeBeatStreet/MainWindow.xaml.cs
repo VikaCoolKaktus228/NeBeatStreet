@@ -25,18 +25,27 @@ namespace NeBeatStreet
         public MainWindow()
         {
             InitializeComponent();
-            AppConnect.shoesmodel = new Entities4();
+            AppConnect.shoesmodel = new Entities5();
             AppFrame.MainFraim = mainframe;
             mainframe.Navigate(new Authorization());
         }
 
         private void N_Closed(object sender, EventArgs e)
         {
-            if (Entities4.GetContext().CartTable.Any())
+            var dbContext = Entities5.GetContext();
+
+            try
             {
-                var allCartRecords = Entities4.GetContext().CartTable.ToList();
-                Entities4.GetContext().CartTable.RemoveRange(allCartRecords);
-                Entities4.GetContext().SaveChanges();
+                if (dbContext.CartTable.Any())
+                {
+                    var allCartRecords = dbContext.CartTable.ToList();
+                    dbContext.CartTable.RemoveRange(allCartRecords);
+                    dbContext.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Произошла ошибка: " + ex, "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
     }

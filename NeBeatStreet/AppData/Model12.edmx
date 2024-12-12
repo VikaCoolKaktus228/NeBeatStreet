@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Хранилище Model" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Хранилище Model1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CartTable">
           <Key>
             <PropertyRef Name="IdCart" />
@@ -12,6 +12,7 @@
           <Property Name="IdCart" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="OrderId" Type="int" Nullable="false" />
           <Property Name="ShoeId" Type="int" Nullable="false" />
+          <Property Name="Quantity" Type="int" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -116,20 +117,6 @@
           <Property Name="Password" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="UserRole" Type="int" Nullable="false" />
         </EntityType>
-        <Association Name="FK_Cart_Shoes">
-          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shoes">
-              <PropertyRef Name="IdShoes" />
-            </Principal>
-            <Dependent Role="CartTable">
-              <PropertyRef Name="ShoeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CartTable_Order">
           <End Role="Order" Type="Self.Order" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -141,6 +128,20 @@
             </Principal>
             <Dependent Role="CartTable">
               <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartTable_Shoes">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="IdShoes" />
+            </Principal>
+            <Dependent Role="CartTable">
+              <PropertyRef Name="ShoeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -315,7 +316,7 @@
           <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-        <EntityContainer Name="Хранилище ModelContainer">
+        <EntityContainer Name="Хранилище Model1Container">
           <EntitySet Name="CartTable" EntityType="Self.CartTable" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Order" EntityType="Self.Order" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="OrderManager" EntityType="Self.OrderManager" Schema="dbo" store:Type="Tables" />
@@ -329,12 +330,12 @@
           <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Cart_Shoes" Association="Self.FK_Cart_Shoes">
-            <End Role="Shoes" EntitySet="Shoes" />
-            <End Role="CartTable" EntitySet="CartTable" />
-          </AssociationSet>
           <AssociationSet Name="FK_CartTable_Order" Association="Self.FK_CartTable_Order">
             <End Role="Order" EntitySet="Order" />
+            <End Role="CartTable" EntitySet="CartTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartTable_Shoes" Association="Self.FK_CartTable_Shoes">
+            <End Role="Shoes" EntitySet="Shoes" />
             <End Role="CartTable" EntitySet="CartTable" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
@@ -378,11 +379,10 @@
             <End Role="User" EntitySet="User" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="CartTable">
           <Key>
             <PropertyRef Name="IdCart" />
@@ -390,8 +390,9 @@
           <Property Name="IdCart" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="OrderId" Type="Int32" Nullable="false" />
           <Property Name="ShoeId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Shoes" Relationship="Self.FK_Cart_Shoes" FromRole="CartTable" ToRole="Shoes" />
           <NavigationProperty Name="Order" Relationship="Self.FK_CartTable_Order" FromRole="CartTable" ToRole="Order" />
+          <NavigationProperty Name="Shoes" Relationship="Self.FK_CartTable_Shoes" FromRole="CartTable" ToRole="Shoes" />
+          <Property Name="Quantity" Type="Int32" />
         </EntityType>
         <EntityType Name="Order">
           <Key>
@@ -437,7 +438,7 @@
           <Property Name="Article" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Firm" Type="Int32" Nullable="false" />
           <Property Name="Photo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="CartTable" Relationship="Self.FK_Cart_Shoes" FromRole="Shoes" ToRole="CartTable" />
+          <NavigationProperty Name="CartTable" Relationship="Self.FK_CartTable_Shoes" FromRole="Shoes" ToRole="CartTable" />
           <NavigationProperty Name="OrderManager" Relationship="Self.FK_OrderManager_Shoes" FromRole="Shoes" ToRole="OrderManager" />
           <NavigationProperty Name="ShoesColor" Relationship="Self.FK_Shoes_ShoesColor" FromRole="Shoes" ToRole="ShoesColor" />
           <NavigationProperty Name="ShoesFirm" Relationship="Self.FK_Shoes_ShoesFirm" FromRole="Shoes" ToRole="ShoesFirm" />
@@ -518,20 +519,6 @@
           <NavigationProperty Name="Order" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
           <NavigationProperty Name="Role" Relationship="Self.FK_User_Role" FromRole="User" ToRole="Role" />
         </EntityType>
-        <Association Name="FK_Cart_Shoes">
-          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
-            <OnDelete Action="Cascade" />
-          </End>
-          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Shoes">
-              <PropertyRef Name="IdShoes" />
-            </Principal>
-            <Dependent Role="CartTable">
-              <PropertyRef Name="ShoeId" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_CartTable_Order">
           <End Role="Order" Type="Self.Order" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -543,6 +530,20 @@
             </Principal>
             <Dependent Role="CartTable">
               <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CartTable_Shoes">
+          <End Role="Shoes" Type="Self.Shoes" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="CartTable" Type="Self.CartTable" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shoes">
+              <PropertyRef Name="IdShoes" />
+            </Principal>
+            <Dependent Role="CartTable">
+              <PropertyRef Name="ShoeId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -686,7 +687,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities4" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="Entities5" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CartTable" EntityType="Self.CartTable" />
           <EntitySet Name="Order" EntityType="Self.Order" />
           <EntitySet Name="OrderManager" EntityType="Self.OrderManager" />
@@ -700,12 +701,12 @@
           <EntitySet Name="Status" EntityType="Self.Status" />
           <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <EntitySet Name="User" EntityType="Self.User" />
-          <AssociationSet Name="FK_Cart_Shoes" Association="Self.FK_Cart_Shoes">
-            <End Role="Shoes" EntitySet="Shoes" />
-            <End Role="CartTable" EntitySet="CartTable" />
-          </AssociationSet>
           <AssociationSet Name="FK_CartTable_Order" Association="Self.FK_CartTable_Order">
             <End Role="Order" EntitySet="Order" />
+            <End Role="CartTable" EntitySet="CartTable" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CartTable_Shoes" Association="Self.FK_CartTable_Shoes">
+            <End Role="Shoes" EntitySet="Shoes" />
             <End Role="CartTable" EntitySet="CartTable" />
           </AssociationSet>
           <AssociationSet Name="FK_Order_Status" Association="Self.FK_Order_Status">
@@ -764,11 +765,11 @@
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model.sp_helpdiagramdefinition_Result)">
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(Model1.sp_helpdiagramdefinition_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model.sp_helpdiagrams_Result)">
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(Model1.sp_helpdiagrams_Result)">
             <Parameter Name="diagramname" Mode="In" Type="String" />
             <Parameter Name="owner_id" Mode="In" Type="Int32" />
           </FunctionImport>
@@ -795,10 +796,11 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities4">
+        <EntityContainerMapping StorageEntityContainer="Хранилище Model1Container" CdmEntityContainer="Entities5">
           <EntitySetMapping Name="CartTable">
-            <EntityTypeMapping TypeName="Model.CartTable">
+            <EntityTypeMapping TypeName="Model1.CartTable">
               <MappingFragment StoreEntitySet="CartTable">
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="IdCart" ColumnName="IdCart" />
                 <ScalarProperty Name="OrderId" ColumnName="OrderId" />
                 <ScalarProperty Name="ShoeId" ColumnName="ShoeId" />
@@ -806,7 +808,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Order">
-            <EntityTypeMapping TypeName="Model.Order">
+            <EntityTypeMapping TypeName="Model1.Order">
               <MappingFragment StoreEntitySet="Order">
                 <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
                 <ScalarProperty Name="IdUsers" ColumnName="IdUsers" />
@@ -815,7 +817,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="OrderManager">
-            <EntityTypeMapping TypeName="Model.OrderManager">
+            <EntityTypeMapping TypeName="Model1.OrderManager">
               <MappingFragment StoreEntitySet="OrderManager">
                 <ScalarProperty Name="IdOrderManager" ColumnName="IdOrderManager" />
                 <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
@@ -824,7 +826,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Role">
-            <EntityTypeMapping TypeName="Model.Role">
+            <EntityTypeMapping TypeName="Model1.Role">
               <MappingFragment StoreEntitySet="Role">
                 <ScalarProperty Name="IdRole" ColumnName="IdRole" />
                 <ScalarProperty Name="NameRole" ColumnName="NameRole" />
@@ -832,7 +834,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Shoes">
-            <EntityTypeMapping TypeName="Model.Shoes">
+            <EntityTypeMapping TypeName="Model1.Shoes">
               <MappingFragment StoreEntitySet="Shoes">
                 <ScalarProperty Name="IdShoes" ColumnName="IdShoes" />
                 <ScalarProperty Name="ShoesName" ColumnName="ShoesName" />
@@ -848,7 +850,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShoesColor">
-            <EntityTypeMapping TypeName="Model.ShoesColor">
+            <EntityTypeMapping TypeName="Model1.ShoesColor">
               <MappingFragment StoreEntitySet="ShoesColor">
                 <ScalarProperty Name="IdColor" ColumnName="IdColor" />
                 <ScalarProperty Name="ColorName" ColumnName="ColorName" />
@@ -856,7 +858,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShoesFirm">
-            <EntityTypeMapping TypeName="Model.ShoesFirm">
+            <EntityTypeMapping TypeName="Model1.ShoesFirm">
               <MappingFragment StoreEntitySet="ShoesFirm">
                 <ScalarProperty Name="IdFirm" ColumnName="IdFirm" />
                 <ScalarProperty Name="NameFirm" ColumnName="NameFirm" />
@@ -864,7 +866,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShoesMaterial">
-            <EntityTypeMapping TypeName="Model.ShoesMaterial">
+            <EntityTypeMapping TypeName="Model1.ShoesMaterial">
               <MappingFragment StoreEntitySet="ShoesMaterial">
                 <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
                 <ScalarProperty Name="MaterialName" ColumnName="MaterialName" />
@@ -872,7 +874,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ShoesType">
-            <EntityTypeMapping TypeName="Model.ShoesType">
+            <EntityTypeMapping TypeName="Model1.ShoesType">
               <MappingFragment StoreEntitySet="ShoesType">
                 <ScalarProperty Name="IdTypeOfShoes" ColumnName="IdTypeOfShoes" />
                 <ScalarProperty Name="NameType" ColumnName="NameType" />
@@ -880,7 +882,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Size">
-            <EntityTypeMapping TypeName="Model.Size">
+            <EntityTypeMapping TypeName="Model1.Size">
               <MappingFragment StoreEntitySet="Size">
                 <ScalarProperty Name="IdSize" ColumnName="IdSize" />
                 <ScalarProperty Name="IdShoes" ColumnName="IdShoes" />
@@ -889,7 +891,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Status">
-            <EntityTypeMapping TypeName="Model.Status">
+            <EntityTypeMapping TypeName="Model1.Status">
               <MappingFragment StoreEntitySet="Status">
                 <ScalarProperty Name="StatusId" ColumnName="StatusId" />
                 <ScalarProperty Name="StatusName" ColumnName="StatusName" />
@@ -897,7 +899,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="Model.sysdiagrams">
+            <EntityTypeMapping TypeName="Model1.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="principal_id" ColumnName="principal_id" />
@@ -908,7 +910,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="User">
-            <EntityTypeMapping TypeName="Model.User">
+            <EntityTypeMapping TypeName="Model1.User">
               <MappingFragment StoreEntitySet="User">
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
@@ -920,20 +922,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Model.sp_alterdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Model.sp_creatediagram" />
-          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Model.sp_dropdiagram" />
-          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Model.sp_helpdiagramdefinition">
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="Хранилище Model1.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="Хранилище Model1.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="Хранилище Model1.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="Хранилище Model1.sp_helpdiagramdefinition">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagramdefinition_Result">
+              <ComplexTypeMapping TypeName="Model1.sp_helpdiagramdefinition_Result">
                 <ScalarProperty Name="version" ColumnName="version" />
                 <ScalarProperty Name="definition" ColumnName="definition" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Model.sp_helpdiagrams">
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="Хранилище Model1.sp_helpdiagrams">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="Model.sp_helpdiagrams_Result">
+              <ComplexTypeMapping TypeName="Model1.sp_helpdiagrams_Result">
                 <ScalarProperty Name="Database" ColumnName="Database" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
@@ -942,8 +944,8 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Model.sp_renamediagram" />
-          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Model.sp_upgraddiagrams" />
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="Хранилище Model1.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="Хранилище Model1.sp_upgraddiagrams" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

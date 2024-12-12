@@ -15,20 +15,19 @@ namespace NeBeatStreet.AppData
     using System.Data.Entity.Core.Objects;
     using System.Linq;
     
-    public partial class Entities4 : DbContext
+    public partial class Entities5 : DbContext
     {
-        private static Entities4 _context;
-        public Entities4()
-            : base("name=Entities4")
+        private static Entities5 _context;
+        public Entities5()
+            : base("name=Entities5")
         {
         }
-        public static Entities4 GetContext()
+        public static Entities5 GetContext()
         {
-            if( _context == null )
-                _context = new Entities4();
+            if(_context == null)
+                _context = new Entities5();
             return _context;
         }
-    
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             throw new UnintentionalCodeFirstException();
