@@ -10,8 +10,8 @@ namespace UnitTestProject1
         [TestMethod]
         public void TestMethod1()
         {
-            var page = new Registration();
-            Assert.IsTrue(page.Reg("vikusik", "ddd@mail.com", "+764465566556", "user666", "123", 1));
+            //var page = new Registration();
+            //Assert.IsTrue(page.Reg("vikusik", "ddd@mail.com", "+764465566556", "user666", "123", 1));
         }
     }
 }

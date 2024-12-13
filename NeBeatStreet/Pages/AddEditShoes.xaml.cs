@@ -122,34 +122,35 @@ namespace NeBeatStreet.Pages
             {
                 MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
             }
+            
         }
 
-        //public bool Edit(string nameshoes, int colcom, int typecom, int firmcom, int matcom, decimal pri, string desc, string art, string phot)
-        //{
-        //    try
-        //    {
-        //        if (thisshoes.IdShoes != null)
-        //        {
-        //            thisshoes.ShoesName = nameshoes;
-        //            thisshoes.Color = colcom;
-        //            thisshoes.TypeOfShoes = typecom;
-        //            thisshoes.Firm = firmcom;
-        //            thisshoes.Material = matcom;
-        //            thisshoes.Price = pri;
-        //            thisshoes.Description = desc;
-        //            thisshoes.Article = art;
-        //            thisshoes.Photo = phot;
-        //        }
-        //        AppConnect.shoesmodel.SaveChanges();
-        //        MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
-        //        AppFrame.MainFraim.Navigate(new AdminList());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
-        //    }
-        //    return true;
-        //}
+        public bool Edit(string nameshoes, int colcom, int typecom, int firmcom, int matcom, decimal pri, string desc, string art, string phot)
+        {
+            try
+            {
+                if (thisshoes.IdShoes != null)
+                {
+                    thisshoes.ShoesName = nameshoes;
+                    thisshoes.Color = colcom;
+                    thisshoes.TypeOfShoes = typecom;
+                    thisshoes.Firm = firmcom;
+                    thisshoes.Material = matcom;
+                    thisshoes.Price = pri;
+                    thisshoes.Description = desc;
+                    thisshoes.Article = art;
+                    thisshoes.Photo = phot;
+                }
+                AppConnect.shoesmodel.SaveChanges();
+                MessageBox.Show("Данные успешно изменены!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                AppFrame.MainFraim.Navigate(new AdminList());
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message.ToString(), "Ошибка", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            return true;
+        }
 
         private void GoBackButton_Click(object sender, RoutedEventArgs e)
         {
@@ -171,7 +172,9 @@ namespace NeBeatStreet.Pages
                     MessageBox.Show("Корректно заполните все данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                AddShoes();
+                //AddShoes();
+                Add(NameShoesTb.Text, ComboColor.SelectedIndex + 1, ComboType.SelectedIndex + 1, ComboFirm.SelectedIndex + 1
+                    , ComboMaterial.SelectedIndex + 1, Convert.ToDecimal(PriceTb.Text), DescriptionTb.Text, ArticleTb.Text, null);
             }
 
             else
@@ -185,7 +188,9 @@ namespace NeBeatStreet.Pages
                     MessageBox.Show("Корректно заполните все данные!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Warning);
                     return;
                 }
-                UpdateShoes();
+                //UpdateShoes();
+                Edit(NameShoesTb.Text, ComboColor.SelectedIndex + 1, ComboType.SelectedIndex + 1, ComboFirm.SelectedIndex + 1
+                    , ComboMaterial.SelectedIndex + 1, Convert.ToDecimal(PriceTb.Text), DescriptionTb.Text, ArticleTb.Text, null);
             }
         }
 
